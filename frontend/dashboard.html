@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101522">
+    <meta name="description" content="CF Chef Dashboard">
+
+    <title>Dashboard | CF Chef</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="./dashboard.css">
+
+</head>
+
+<body>
+
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <div class="app-layout">
+
+        <aside class="sidebar" id="sidebar">
+
+            <div class="brand">
+
+                <div class="brand-icon">
+                    <i class="fa-solid fa-utensils"></i>
+                </div>
+
+                <div>
+                    <h2>CF <span>Chef</span></h2>
+                    <p>CHEF PORTAL</p>
+                </div>
+
+            </div>
+
+            <div class="sidebar-label">WORKSPACE</div>
+
+            <nav class="sidebar-nav">
+
+                <a href="#overview" class="nav-link active">
+                    <i class="fa-solid fa-grid-2"></i>
+                    <span>Overview</span>
+                </a>
+
+                <a href="./profile.html" class="nav-link">
+                    <i class="fa-solid fa-user"></i>
+                    <span>My Profile</span>
+                </a>
+
+                <a href="./bookings.html" class="nav-link">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <span>Bookings</span>
+                    <span class="nav-soon"></span>
+                </a>
+
+                <a href="#earnings" class="nav-link">
+                    <i class="fa-solid fa-wallet"></i>
+                    <span>Earnings</span>
+                    <span class="nav-soon">Soon</span>
+                </a>
+
+            </nav>
+
+            <div class="sidebar-label settings-label">ACCOUNT</div>
+
+            <nav class="sidebar-nav">
+
+                <a href="#profile" class="nav-link">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Settings</span>
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <div class="sidebar-help">
+                    <div class="help-icon">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+
+                    <div>
+                        <h4>Need help?</h4>
+                        <p>Support is coming soon.</p>
+                    </div>
+                </div>
+
+                <button class="logout-button" id="logoutBtn">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Sign Out</span>
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <main class="main-content" id="overview">
+
+            <header class="topbar">
+
+                <button class="menu-button" id="menuBtn" aria-label="Toggle navigation">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <div class="topbar-heading">
+                    <p>CHEF WORKSPACE</p>
+                    <h2>Dashboard</h2>
+                </div>
+
+                <div class="topbar-right">
+
+                    <div class="live-indicator">
+                        <span class="live-dot"></span>
+                        <span>Connected</span>
+                    </div>
+
+                    <div class="top-avatar" id="topAvatar">C</div>
+
+                </div>
+
+            </header>
+
+
+            <div class="dashboard-container">
+
+                <section class="welcome-section">
+
+                    <div class="welcome-content">
+
+                        <span class="eyebrow">
+                            <i class="fa-solid fa-sparkles"></i>
+                            YOUR CHEF SPACE
+                        </span>
+
+                        <h1>
+                            Welcome back,
+                            <span id="welcomeName">Chef</span>
+                        </h1>
+
+                        <p>
+                            Your culinary journey starts here.
+                            Manage your chef profile and explore your workspace.
+                        </p>
+
+                    </div>
+
+                    <div class="welcome-decoration">
+                        <i class="fa-solid fa-kitchen-set"></i>
+                    </div>
+
+                </section>
+
+
+                <section class="status-card">
+
+                    <div class="status-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+
+                    <div class="status-content">
+                        <h3>Chef account access</h3>
+                        <p id="accountStatus">
+                            Checking your account...
+                        </p>
+                    </div>
+
+                    <span class="status-badge" id="statusBadge">
+                        Checking
+                    </span>
+
+                </section>
+
+
+                <section class="section-block">
+
+                    <div class="section-heading">
+                        <div>
+                            <span class="section-eyebrow">YOUR WORKSPACE</span>
+                            <h2>Quick Access</h2>
+                        </div>
+                    </div>
+
+                    <div class="quick-grid">
+
+                        <a href="./profile.html" class="quick-card">
+
+                            <div class="quick-icon purple">
+                                <i class="fa-solid fa-id-card"></i>
+                            </div>
+
+                            <div>
+                                <h3>My Profile</h3>
+                                <p>View your chef details</p>
+                            </div>
+
+                            <i class="fa-solid fa-arrow-up-right-from-square card-arrow"></i>
+
+                        </a>
+
+
+                        <a href="./bookings.html" class="quick-card">
+
+                            <div class="quick-icon cyan">
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </div>
+
+                            <div>
+                                <h3>Bookings</h3>
+                                <p>Booking management</p>
+                            </div>
+
+                            <i class="fa-solid fa-arrow-up-right-from-square card-arrow"></i>
+
+                        </a>
+
+
+                        <a href="#earnings" class="quick-card">
+
+                            <div class="quick-icon orange">
+                                <i class="fa-solid fa-coins"></i>
+                            </div>
+
+                            <div>
+                                <h3>Earnings</h3>
+                                <p>Financial overview</p>
+                            </div>
+
+                            <i class="fa-solid fa-arrow-up-right-from-square card-arrow"></i>
+
+                        </a>
+
+                    </div>
+
+                </section>
+
+
+                <section class="section-block" id="profile">
+
+                    <div class="section-heading">
+
+                        <div>
+                            <span class="section-eyebrow">PERSONAL INFORMATION</span>
+                            <h2>Your Chef Profile</h2>
+                        </div>
+
+                        <span class="profile-label">
+                            <i class="fa-solid fa-database"></i>
+                            Supabase
+                        </span>
+
+                    </div>
+
+                    <div class="profile-card">
+
+                        <div class="profile-header">
+
+                            <div class="profile-avatar" id="profileAvatar">
+                                C
+                            </div>
+
+                            <div class="profile-identity">
+
+                                <h3 id="profileName">Loading profile...</h3>
+
+                                <p id="profileUsername">@username</p>
+
+                            </div>
+
+                            <div class="profile-account-tag">
+                                <i class="fa-solid fa-user-check"></i>
+                                Chef Account
+                            </div>
+
+                        </div>
+
+                        <div class="profile-divider"></div>
+
+                        <div class="profile-details">
+
+                            <div class="detail-item">
+                                <span>EMAIL ADDRESS</span>
+                                <p id="profileEmail">Loading...</p>
+                            </div>
+
+                            <div class="detail-item">
+                                <span>PHONE NUMBER</span>
+                                <p id="profilePhone">Loading...</p>
+                            </div>
+
+                            <div class="detail-item">
+                                <span>CHEF ID</span>
+                                <p id="profileId">Loading...</p>
+                            </div>
+
+                            <div class="detail-item">
+                                <span>JOINED ON</span>
+                                <p id="profileJoined">Loading...</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <section class="section-block upcoming-section">
+
+                    <div class="section-heading">
+                        <div>
+                            <span class="section-eyebrow">WHAT'S NEXT</span>
+                            <h2>Your Future Workspace</h2>
+                        </div>
+                    </div>
+
+                    <div class="upcoming-grid">
+
+                        <div class="upcoming-card" id="bookings">
+
+                            <div class="upcoming-icon">
+                                <i class="fa-solid fa-calendar-check"></i>
+                            </div>
+
+                            <div>
+                                <span class="coming-label">COMING SOON</span>
+                                <h3>Booking Management</h3>
+                                <p>Manage incoming customer requests.</p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="upcoming-card" id="earnings">
+
+                            <div class="upcoming-icon">
+                                <i class="fa-solid fa-chart-line"></i>
+                            </div>
+
+                            <div>
+                                <span class="coming-label">COMING SOON</span>
+                                <h3>Earnings Dashboard</h3>
+                                <p>Track your earnings and payments.</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <footer class="dashboard-footer">
+
+                    <p>
+                        © <span id="currentYear"></span> CF Chef.
+                        Powered by UPEXT.
+                    </p>
+
+                    <span>Built for culinary professionals.</span>
+
+                </footer>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <div class="toast" id="toast"></div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="./supabase-config.js"></script>
+    <script src="./dashboard.js"></script>
+
+</body>
+</html>

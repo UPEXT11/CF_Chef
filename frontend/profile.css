@@ -1,0 +1,953 @@
+
+/* =====================================================
+   CF CHEF — PROFILE PAGE CSS
+===================================================== */
+
+
+/* <!------- Stage 1: Global Configuration -------> */
+
+:root {
+    --bg: #101522;
+    --card: rgba(25, 34, 52, 0.86);
+    --card-hover: #202b40;
+
+    --cyan: #42d9ed;
+    --blue: #578bff;
+    --purple: #a879ff;
+    --orange: #ffad66;
+    --green: #45d6a0;
+
+    --text: #f4f7ff;
+    --muted: #96a2b9;
+    --border: rgba(255, 255, 255, 0.08);
+
+    --danger: #ff7185;
+    --radius: 18px;
+}
+
+
+/* <!------- Stage 2: Reset -------> */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: "Inter", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* <!------- Stage 3: Background Effects -------> */
+
+.background-glow {
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    filter: blur(130px);
+    opacity: 0.12;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.glow-one {
+    top: -180px;
+    left: 15%;
+    background: var(--cyan);
+}
+
+.glow-two {
+    right: -100px;
+    bottom: -180px;
+    background: var(--purple);
+}
+
+
+/* <!------- Stage 4: Main Layout -------> */
+
+.app-layout {
+    min-height: 100vh;
+    display: flex;
+}
+
+
+/* <!------- Stage 5: Sidebar -------> */
+
+.sidebar {
+    width: 255px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    padding: 27px 17px;
+    display: flex;
+    flex-direction: column;
+    background: rgba(16, 22, 35, 0.95);
+    border-right: 1px solid var(--border);
+    backdrop-filter: blur(20px);
+    transition: transform 0.3s ease;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 9px;
+    margin-bottom: 47px;
+}
+
+.brand-icon {
+    width: 43px;
+    height: 43px;
+    display: grid;
+    place-items: center;
+    border-radius: 13px;
+    color: #08131d;
+    background: linear-gradient(135deg, var(--cyan), var(--blue));
+    font-size: 19px;
+    box-shadow: 0 0 25px rgba(66, 217, 237, 0.2);
+}
+
+.brand h2 {
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: -0.7px;
+}
+
+.brand h2 span {
+    color: var(--cyan);
+}
+
+.brand p {
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.sidebar-label {
+    padding: 0 12px;
+    margin-bottom: 13px;
+    color: #68758e;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.7px;
+}
+
+.settings-label {
+    margin-top: 33px;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.nav-link {
+    min-height: 47px;
+    padding: 0 13px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    border-radius: 11px;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 500;
+    transition: 0.25s;
+}
+
+.nav-link i {
+    width: 18px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--cyan);
+    background: rgba(66, 217, 237, 0.09);
+}
+
+.nav-link.active {
+    border: 1px solid rgba(66, 217, 237, 0.12);
+}
+
+.nav-soon {
+    margin-left: auto;
+    color: var(--purple);
+    font-size: 9px;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+}
+
+.sidebar-help {
+    padding: 14px 10px;
+    margin-bottom: 17px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+}
+
+.help-icon {
+    width: 35px;
+    height: 35px;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    background: rgba(168, 121, 255, 0.12);
+    color: var(--purple);
+}
+
+.sidebar-help h4 {
+    font-size: 11px;
+}
+
+.sidebar-help p {
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 9px;
+}
+
+.logout-button {
+    width: 100%;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 1px solid rgba(255, 113, 133, 0.15);
+    border-radius: 11px;
+    background: rgba(255, 113, 133, 0.07);
+    color: var(--danger);
+    font-size: 12px;
+    font-weight: 600;
+    transition: 0.25s;
+}
+
+.logout-button:hover {
+    background: rgba(255, 113, 133, 0.16);
+}
+
+
+/* <!------- Stage 6: Main Content -------> */
+
+.main-content {
+    width: calc(100% - 255px);
+    min-height: 100vh;
+    margin-left: 255px;
+}
+
+
+/* <!------- Stage 7: Topbar -------> */
+
+.topbar {
+    height: 88px;
+    padding: 0 38px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(16, 21, 34, 0.82);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(18px);
+}
+
+.topbar-heading p {
+    margin-bottom: 5px;
+    color: var(--cyan);
+    font-size: 9px;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.topbar-heading h2 {
+    font-size: 20px;
+    letter-spacing: -0.5px;
+}
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+    font-size: 11px;
+    transition: 0.2s;
+}
+
+.back-button:hover {
+    color: var(--cyan);
+}
+
+.top-avatar,
+.hero-avatar {
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--cyan), var(--purple));
+    color: #101522;
+    font-weight: 800;
+}
+
+.top-avatar {
+    width: 39px;
+    height: 39px;
+}
+
+.menu-button {
+    display: none;
+    background: none;
+    border: 0;
+    color: var(--text);
+    font-size: 20px;
+}
+
+
+/* <!------- Stage 8: Profile Container -------> */
+
+.profile-container {
+    width: min(1050px, 100%);
+    padding: 36px 38px 25px;
+    margin: auto;
+}
+
+.content-section {
+    margin-top: 35px;
+}
+
+
+/* <!------- Stage 9: Page Introduction -------> */
+
+.page-intro {
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.section-eyebrow {
+    color: var(--cyan);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.page-intro h1 {
+    margin-top: 10px;
+    font-size: 30px;
+    letter-spacing: -1px;
+}
+
+.page-intro p {
+    max-width: 470px;
+    margin-top: 9px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.intro-icon {
+    width: 65px;
+    height: 65px;
+    display: grid;
+    place-items: center;
+    border-radius: 20px;
+    background: rgba(66, 217, 237, 0.09);
+    border: 1px solid rgba(66, 217, 237, 0.14);
+    color: var(--cyan);
+    font-size: 25px;
+}
+
+
+/* <!------- Stage 10: Profile Hero -------> */
+
+.profile-hero {
+    min-height: 145px;
+    padding: 25px 28px;
+    display: flex;
+    align-items: center;
+    gap: 19px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(66, 217, 237, 0.15);
+    border-radius: 20px;
+    background: linear-gradient(
+        110deg,
+        rgba(33, 63, 89, 0.9),
+        rgba(39, 38, 74, 0.92)
+    );
+}
+
+.hero-avatar {
+    width: 76px;
+    height: 76px;
+    flex-shrink: 0;
+    font-size: 26px;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.hero-details {
+    min-width: 0;
+    flex: 1;
+}
+
+.hero-label {
+    color: var(--cyan);
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+}
+
+.hero-details h2 {
+    margin-top: 8px;
+    font-size: 21px;
+    overflow-wrap: anywhere;
+}
+
+.hero-details p {
+    margin-top: 6px;
+    color: #b6c7dc;
+    font-size: 11px;
+}
+
+.hero-status {
+    padding: 9px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(69, 214, 160, 0.15);
+    border-radius: 20px;
+    background: rgba(69, 214, 160, 0.08);
+    color: var(--green);
+    font-size: 10px;
+    white-space: nowrap;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 9px var(--green);
+}
+
+
+/* <!------- Stage 11: Section Headings -------> */
+
+.section-heading {
+    margin-bottom: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.section-heading h2 {
+    margin-top: 7px;
+    font-size: 19px;
+    letter-spacing: -0.5px;
+}
+
+.edit-indicator {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--cyan);
+    font-size: 10px;
+}
+
+
+/* <!------- Stage 12: Profile Form -------> */
+
+.profile-card {
+    padding: 25px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 23px 19px;
+}
+
+.form-group {
+    min-width: 0;
+}
+
+.form-group label {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    color: #dce5f5;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.locked-label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #8491a8;
+    font-size: 8px;
+    font-weight: 500;
+}
+
+.input-wrapper {
+    height: 49px;
+    padding: 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    background: rgba(10, 15, 26, 0.45);
+    transition: 0.2s;
+}
+
+.input-wrapper:focus-within {
+    border-color: rgba(66, 217, 237, 0.5);
+    box-shadow: 0 0 0 3px rgba(66, 217, 237, 0.06);
+}
+
+.input-wrapper > i {
+    color: var(--cyan);
+    font-size: 13px;
+}
+
+.input-wrapper input {
+    width: 100%;
+    min-width: 0;
+    height: 100%;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--text);
+    font-size: 11px;
+}
+
+.input-wrapper input::placeholder {
+    color: #6f7d94;
+}
+
+.locked-input {
+    background: rgba(255, 255, 255, 0.025);
+    border-style: dashed;
+}
+
+.locked-input input {
+    color: #a2aec2;
+    cursor: not-allowed;
+}
+
+.form-actions {
+    margin-top: 27px;
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    border-top: 1px solid var(--border);
+}
+
+.form-message {
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+.form-message.success {
+    color: var(--green);
+}
+
+.form-message.error {
+    color: var(--danger);
+}
+
+.save-button {
+    min-width: 150px;
+    height: 45px;
+    padding: 0 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    border: 0;
+    border-radius: 11px;
+    background: linear-gradient(110deg, var(--cyan), var(--blue));
+    color: #091522;
+    font-size: 11px;
+    font-weight: 800;
+    transition: 0.2s;
+}
+
+.save-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 22px rgba(66, 217, 237, 0.16);
+}
+
+.save-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+
+/* <!------- Stage 13: Account Information -------> */
+
+.information-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+
+.information-card {
+    min-width: 0;
+    min-height: 90px;
+    padding: 17px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+}
+
+.information-icon {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    font-size: 16px;
+}
+
+.information-icon.cyan {
+    color: var(--cyan);
+    background: rgba(66, 217, 237, 0.1);
+}
+
+.information-icon.purple {
+    color: var(--purple);
+    background: rgba(168, 121, 255, 0.1);
+}
+
+.information-icon.orange {
+    color: var(--orange);
+    background: rgba(255, 173, 102, 0.1);
+}
+
+.information-icon.green {
+    color: var(--green);
+    background: rgba(69, 214, 160, 0.1);
+}
+
+.information-card div:last-child {
+    min-width: 0;
+}
+
+.information-card span {
+    color: #78859e;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.information-card p {
+    margin-top: 8px;
+    color: #e4ebf7;
+    font-size: 11px;
+    overflow-wrap: anywhere;
+}
+
+
+/* <!------- Stage 14: Security Notice -------> */
+
+.security-notice {
+    margin-top: 30px;
+    padding: 19px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    border: 1px solid rgba(66, 217, 237, 0.12);
+    border-radius: 15px;
+    background: rgba(66, 217, 237, 0.045);
+}
+
+.notice-icon {
+    width: 39px;
+    height: 39px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 11px;
+    color: var(--cyan);
+    background: rgba(66, 217, 237, 0.1);
+}
+
+.security-notice h3 {
+    font-size: 12px;
+}
+
+.security-notice p {
+    margin-top: 7px;
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.8;
+}
+
+
+/* <!------- Stage 15: Footer -------> */
+
+.page-footer {
+    margin-top: 40px;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    border-top: 1px solid var(--border);
+    color: #71809b;
+    font-size: 10px;
+}
+
+.page-footer a {
+    color: var(--cyan);
+}
+
+
+/* <!------- Stage 16: Toast -------> */
+
+.toast {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    z-index: 300;
+    max-width: calc(100% - 40px);
+    padding: 14px 19px;
+    background: #202c40;
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    font-size: 12px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    transition: 0.25s;
+}
+
+.toast.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.toast.error {
+    border-color: rgba(255, 113, 133, 0.35);
+    color: var(--danger);
+}
+
+
+/* <!------- Stage 17: Tablet Responsive -------> */
+
+@media (max-width: 1000px) {
+
+    .sidebar {
+        width: 225px;
+    }
+
+    .main-content {
+        width: calc(100% - 225px);
+        margin-left: 225px;
+    }
+
+    .profile-container {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+}
+
+
+/* <!------- Stage 18: Mobile Responsive -------> */
+
+@media (max-width: 760px) {
+
+    .sidebar {
+        width: 270px;
+        transform: translateX(-100%);
+        box-shadow: 15px 0 45px rgba(0, 0, 0, 0.35);
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .topbar {
+        height: 75px;
+        padding: 0 17px;
+        gap: 13px;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+    .topbar-heading {
+        flex: 1;
+    }
+
+    .topbar-heading h2 {
+        font-size: 17px;
+    }
+
+    .topbar-right {
+        gap: 12px;
+    }
+
+    .back-button span {
+        display: none;
+    }
+
+    .profile-container {
+        padding: 23px 16px;
+    }
+
+    .page-intro h1 {
+        font-size: 26px;
+    }
+
+    .intro-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 19px;
+    }
+
+    .profile-hero {
+        padding: 20px;
+        flex-wrap: wrap;
+    }
+
+    .hero-avatar {
+        width: 61px;
+        height: 61px;
+        font-size: 21px;
+    }
+
+    .hero-details h2 {
+        font-size: 17px;
+    }
+
+    .hero-status {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .profile-card {
+        padding: 18px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 19px;
+    }
+
+    .form-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .save-button {
+        width: 100%;
+    }
+
+    .information-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .page-footer {
+        flex-direction: column;
+        line-height: 1.7;
+    }
+
+}
+
+
+/* <!------- Stage 19: Small Screens -------> */
+
+@media (max-width: 380px) {
+
+    .top-avatar {
+        width: 34px;
+        height: 34px;
+    }
+
+    .hero-details h2 {
+        font-size: 15px;
+    }
+
+    .edit-indicator {
+        font-size: 8px;
+    }
+
+}
+
+
+/* <!------- Stage 20: Reduced Motion -------> */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+
+}

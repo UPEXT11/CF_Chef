@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101522">
+    <meta name="description" content="Manage your CF Chef profile.">
+
+    <title>My Profile | CF Chef</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="./profile.css">
+
+</head>
+
+<body>
+
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+
+    <div class="app-layout">
+
+        <aside class="sidebar" id="sidebar">
+
+            <div class="brand">
+
+                <div class="brand-icon">
+                    <i class="fa-solid fa-utensils"></i>
+                </div>
+
+                <div>
+                    <h2>CF <span>Chef</span></h2>
+                    <p>CHEF PORTAL</p>
+                </div>
+
+            </div>
+
+            <div class="sidebar-label">WORKSPACE</div>
+
+            <nav class="sidebar-nav">
+
+                <a href="./dashboard.html" class="nav-link">
+                    <i class="fa-solid fa-grid-2"></i>
+                    <span>Overview</span>
+                </a>
+
+                <a href="./profile.html" class="nav-link active">
+                    <i class="fa-solid fa-user"></i>
+                    <span>My Profile</span>
+                </a>
+
+                <a href="./bookings.html" class="nav-link">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <span>Bookings</span>
+                    <span class="nav-soon"></span>
+                </a>
+
+                <a href="./dashboard.html#earnings" class="nav-link">
+                    <i class="fa-solid fa-wallet"></i>
+                    <span>Earnings</span>
+                    <span class="nav-soon">Soon</span>
+                </a>
+
+            </nav>
+
+            <div class="sidebar-label settings-label">ACCOUNT</div>
+
+            <nav class="sidebar-nav">
+
+                <a href="./profile.html" class="nav-link">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Settings</span>
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <div class="sidebar-help">
+                    <div class="help-icon">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+
+                    <div>
+                        <h4>Need help?</h4>
+                        <p>Support is coming soon.</p>
+                    </div>
+                </div>
+
+                <button class="logout-button" id="logoutBtn" type="button">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Sign Out</span>
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <main class="main-content">
+
+            <header class="topbar">
+
+                <button
+                    class="menu-button"
+                    id="menuBtn"
+                    aria-label="Toggle navigation"
+                    type="button"
+                >
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <div class="topbar-heading">
+                    <p>CHEF WORKSPACE</p>
+                    <h2>My Profile</h2>
+                </div>
+
+                <div class="topbar-right">
+
+                    <a href="./dashboard.html" class="back-button">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span>Dashboard</span>
+                    </a>
+
+                    <div class="top-avatar" id="topAvatar">C</div>
+
+                </div>
+
+            </header>
+
+
+            <div class="profile-container">
+
+                <section class="page-intro">
+
+                    <div>
+                        <span class="section-eyebrow">ACCOUNT MANAGEMENT</span>
+                        <h1>Your Profile</h1>
+                        <p>
+                            Manage your personal information and
+                            review your chef account details.
+                        </p>
+                    </div>
+
+                    <div class="intro-icon">
+                        <i class="fa-solid fa-user-gear"></i>
+                    </div>
+
+                </section>
+
+
+                <section class="profile-hero">
+
+                    <div class="hero-avatar" id="heroAvatar">
+                        C
+                    </div>
+
+                    <div class="hero-details">
+
+                        <span class="hero-label">
+                            CF CHEF MEMBER
+                        </span>
+
+                        <h2 id="heroName">Loading profile...</h2>
+
+                        <p id="heroUsername">@username</p>
+
+                    </div>
+
+                    <div class="hero-status">
+                        <span class="status-dot"></span>
+                        Account connected
+                    </div>
+
+                </section>
+
+
+                <section class="content-section">
+
+                    <div class="section-heading">
+
+                        <div>
+                            <span class="section-eyebrow">PERSONAL DETAILS</span>
+                            <h2>Basic Information</h2>
+                        </div>
+
+                        <span class="edit-indicator">
+                            <i class="fa-solid fa-pen"></i>
+                            Editable fields
+                        </span>
+
+                    </div>
+
+
+                    <form id="profileForm" class="profile-card">
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label for="fullName">
+                                    Full Name
+                                </label>
+
+                                <div class="input-wrapper">
+                                    <i class="fa-solid fa-user"></i>
+
+                                    <input
+                                        type="text"
+                                        id="fullName"
+                                        name="fullName"
+                                        placeholder="Your full name"
+                                        minlength="2"
+                                        maxlength="80"
+                                        autocomplete="name"
+                                        required
+                                    >
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="username">
+                                    Username
+                                    <span class="locked-label">
+                                        <i class="fa-solid fa-lock"></i>
+                                        Protected
+                                    </span>
+                                </label>
+
+                                <div class="input-wrapper locked-input">
+                                    <i class="fa-solid fa-at"></i>
+
+                                    <input
+                                        type="text"
+                                        id="username"
+                                        name="username"
+                                        readonly
+                                        placeholder="Loading..."
+                                    >
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="email">
+                                    Email Address
+                                    <span class="locked-label">
+                                        <i class="fa-solid fa-lock"></i>
+                                        Protected
+                                    </span>
+                                </label>
+
+                                <div class="input-wrapper locked-input">
+                                    <i class="fa-solid fa-envelope"></i>
+
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        readonly
+                                        placeholder="Loading..."
+                                    >
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="phone">
+                                    Phone Number
+                                </label>
+
+                                <div class="input-wrapper">
+                                    <i class="fa-solid fa-phone"></i>
+
+                                    <input
+                                        type="tel"
+                                        id="phone"
+                                        name="phone"
+                                        placeholder="Your phone number"
+                                        maxlength="20"
+                                        autocomplete="tel"
+                                        required
+                                    >
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-actions">
+
+                            <p id="formMessage" class="form-message">
+                                Your changes will be saved to your account.
+                            </p>
+
+                            <button
+                                type="submit"
+                                class="save-button"
+                                id="saveBtn"
+                            >
+                                <i class="fa-solid fa-floppy-disk"></i>
+                                <span>Save Changes</span>
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </section>
+
+
+                <section class="content-section">
+
+                    <div class="section-heading">
+
+                        <div>
+                            <span class="section-eyebrow">VERIFICATION DETAILS</span>
+                            <h2>Account Information</h2>
+                        </div>
+
+                    </div>
+
+                    <div class="information-grid">
+
+                        <div class="information-card">
+
+                            <div class="information-icon cyan">
+                                <i class="fa-solid fa-fingerprint"></i>
+                            </div>
+
+                            <div>
+                                <span>CHEF ACCOUNT ID</span>
+                                <p id="chefId">Loading...</p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="information-card">
+
+                            <div class="information-icon purple">
+                                <i class="fa-solid fa-key"></i>
+                            </div>
+
+                            <div>
+                                <span>AUTHORIZATION CODE</span>
+                                <p id="atcCode">Loading...</p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="information-card">
+
+                            <div class="information-icon orange">
+                                <i class="fa-solid fa-calendar-plus"></i>
+                            </div>
+
+                            <div>
+                                <span>MEMBER SINCE</span>
+                                <p id="joinedDate">Loading...</p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="information-card">
+
+                            <div class="information-icon green">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+
+                            <div>
+                                <span>ACCOUNT TYPE</span>
+                                <p>CF Chef Member</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <section class="security-notice">
+
+                    <div class="notice-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+
+                    <div>
+                        <h3>Your account information is protected</h3>
+                        <p>
+                            Your username and authorization code cannot
+                            be changed from this page. Your password is
+                            managed securely through Supabase Auth.
+                        </p>
+                    </div>
+
+                </section>
+
+
+                <footer class="page-footer">
+
+                    <p>
+                        © <span id="currentYear"></span> CF Chef.
+                        Powered by UPEXT.
+                    </p>
+
+                    <a href="./dashboard.html">
+                        Return to Dashboard
+                    </a>
+
+                </footer>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <div class="toast" id="toast"></div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="./supabase-config.js"></script>
+    <script src="./profile.js"></script>
+
+</body>
+</html>
