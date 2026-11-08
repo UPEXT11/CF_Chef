@@ -10,6 +10,7 @@
 
     <title>Bookings | CF Chef</title>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="./bookings.css">
     <link rel="stylesheet" href="./tab.css">
 
@@ -26,14 +27,15 @@
                 <div class="topbar-inner">
 
                     <div class="topbar-text">
-                        <h1>My Bookings</h1>
-                        <p>Manage your customer booking requests.</p>
+                        <span class="page-eyebrow"><i class="fa-solid fa-calendar-check"></i> CHEF OPERATIONS</span>
+                        <h1>Booking requests</h1>
+                        <p>Stay on top of every experience, from first request to final plate.</p>
                     </div>
 
                 </div>
 
                 <button id="refreshBtn" class="refresh-btn" type="button">
-                    ↻ Refresh
+                    <i class="fa-solid fa-rotate-right"></i> Refresh
                 </button>
 
             </header>
@@ -42,22 +44,22 @@
             <section class="stats">
 
                 <article class="stat-card">
-                    <span>All bookings</span>
+                    <span><i class="fa-solid fa-layer-group"></i> All bookings</span>
                     <strong id="totalCount">0</strong>
                 </article>
 
                 <article class="stat-card pending-card">
-                    <span>Pending</span>
+                    <span><i class="fa-solid fa-hourglass-half"></i> Pending</span>
                     <strong id="pendingCount">0</strong>
                 </article>
 
                 <article class="stat-card accepted-card">
-                    <span>Accepted</span>
+                    <span><i class="fa-solid fa-circle-check"></i> Accepted</span>
                     <strong id="acceptedCount">0</strong>
                 </article>
 
                 <article class="stat-card completed-card">
-                    <span>Completed</span>
+                    <span><i class="fa-solid fa-star"></i> Completed</span>
                     <strong id="completedCount">0</strong>
                 </article>
 
@@ -69,20 +71,19 @@
                 <div class="section-heading">
 
                     <div>
-                        <h2>Booking requests</h2>
-                        <p>Requests assigned to your chef account.</p>
+                        <div class="section-title-row"><span class="section-icon"><i class="fa-solid fa-inbox"></i></span><div><h2>All requests</h2><p>Requests assigned to your chef account.</p></div></div>
                     </div>
 
                     <input
                         type="search"
                         id="searchInput"
-                        placeholder="Search customer..."
+                        placeholder="Search customer or ID..."
                         autocomplete="off"
                     >
 
                 </div>
 
-                <div class="filters" id="filters">
+                <div class="filters" id="filters" aria-label="Filter bookings">
                     <button class="filter active" data-status="all" type="button">All</button>
                     <button class="filter" data-status="pending" type="button">Pending</button>
                     <button class="filter" data-status="accepted" type="button">Accepted</button>
