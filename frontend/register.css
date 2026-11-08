@@ -1,0 +1,719 @@
+/* <!------- Stage 1: Design Tokens -------> */
+
+:root {
+    color-scheme: dark;
+
+    --background: #171b27;
+    --cyan: #73e8ff;
+    --blue: #4e9eff;
+    --violet: #b58aff;
+
+    --text: #f4f7ff;
+    --muted: #9ca8bd;
+
+    --glass-border: rgba(218,232,255,0.17);
+}
+
+
+/* <!------- Stage 2: Reset -------> */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    font-family: "Inter", system-ui, sans-serif;
+
+    color: var(--text);
+    background: var(--background);
+
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* <!------- Stage 3: Main Background -------> */
+
+.register-page {
+    position: relative;
+    isolation: isolate;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    padding: 30px 17px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 35%,
+            rgba(51,75,117,0.25),
+            transparent 55%
+        ),
+        linear-gradient(
+            145deg,
+            #202634,
+            #171b27 48%,
+            #10131d
+        );
+}
+
+
+/* <!------- Stage 4: Background Grid -------> */
+
+.grid-overlay {
+    position: fixed;
+    inset: 0;
+
+    z-index: -3;
+
+    opacity: 0.13;
+
+    pointer-events: none;
+
+    background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+
+    background-size: 42px 42px;
+}
+
+
+/* <!------- Stage 5: Ambient Lighting -------> */
+
+.ambient {
+    position: fixed;
+
+    z-index: -2;
+
+    width: 280px;
+    height: 280px;
+
+    border-radius: 50%;
+
+    filter: blur(90px);
+
+    opacity: 0.35;
+
+    pointer-events: none;
+}
+
+.ambient-cyan {
+    top: 5%;
+    left: -150px;
+
+    background: #168dff;
+
+    animation: ambient-float 8s ease-in-out infinite alternate;
+}
+
+.ambient-violet {
+    right: -150px;
+    bottom: 5%;
+
+    background: #883dff;
+
+    animation: ambient-float 9s ease-in-out infinite alternate-reverse;
+}
+
+
+/* <!------- Stage 6: Registration Card -------> */
+
+.register-container {
+    position: relative;
+    isolation: isolate;
+
+    width: min(100%, 450px);
+
+    margin: auto;
+
+    padding: 32px 28px 25px;
+
+    overflow: hidden;
+
+    border: 1px solid var(--glass-border);
+    border-radius: 29px;
+
+    background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.09),
+        rgba(255,255,255,0.025) 48%,
+        rgba(109,126,180,0.065)
+    );
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.32),
+        inset 0 1px 1px rgba(255,255,255,0.15);
+
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+
+    animation: card-enter 0.8s ease both;
+}
+
+
+/* <!------- Stage 7: Back Button -------> */
+
+.back-button {
+    position: absolute;
+
+    top: 18px;
+    left: 18px;
+
+    display: grid;
+    place-items: center;
+
+    width: 34px;
+    height: 34px;
+
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 11px;
+
+    background: rgba(255,255,255,0.045);
+
+    color: #b9c8dd;
+
+    font-size: 20px;
+    text-decoration: none;
+
+    transition: 0.25s ease;
+}
+
+.back-button:hover {
+    border-color: var(--cyan);
+    color: var(--cyan);
+
+    transform: translateX(-3px);
+}
+
+
+/* <!------- Stage 8: Brand Header -------> */
+
+.brand-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+}
+
+.logo-shell {
+    position: relative;
+
+    display: grid;
+    place-items: center;
+
+    width: 66px;
+    height: 66px;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(115,232,255,0.45);
+    border-radius: 50%;
+
+    background: linear-gradient(145deg,#343e56,#171b27);
+
+    box-shadow:
+        0 0 25px rgba(67,213,255,0.16),
+        0 0 45px rgba(157,94,255,0.10);
+}
+
+.logo-shell img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    border-radius: inherit;
+}
+
+#logoFallback {
+    position: absolute;
+    inset: 0;
+
+    display: none;
+    place-items: center;
+
+    background: linear-gradient(135deg,#3c5e85,#514079);
+
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.brand-header h1 {
+    margin-top: 12px;
+
+    font-size: 23px;
+    font-weight: 800;
+
+    letter-spacing: 4px;
+}
+
+.brand-header h1 span {
+    color: transparent;
+
+    background: linear-gradient(100deg,#73e8ff,#c5a2ff);
+
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.brand-tagline {
+    margin-top: 7px;
+
+    color: #8999b3;
+
+    font-size: 8px;
+    font-weight: 600;
+
+    letter-spacing: 1.3px;
+}
+
+
+/* <!------- Stage 9: Welcome Section -------> */
+
+.welcome-section {
+    margin-top: 27px;
+
+    text-align: center;
+}
+
+.welcome-badge {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 8px 12px;
+
+    border: 1px solid rgba(115,232,255,0.16);
+    border-radius: 50px;
+
+    background: rgba(115,232,255,0.045);
+
+    color: #a9bbd4;
+
+    font-size: 8px;
+    font-weight: 700;
+
+    letter-spacing: 1.2px;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: var(--cyan);
+
+    box-shadow: 0 0 9px var(--cyan);
+}
+
+.welcome-section h2 {
+    margin-top: 17px;
+
+    font-size: 30px;
+    font-weight: 800;
+
+    letter-spacing: -1px;
+}
+
+.welcome-section h2 span {
+    color: transparent;
+
+    background: linear-gradient(100deg,#73e8ff,#b58aff);
+
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.welcome-section p {
+    margin-top: 8px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+
+/* <!------- Stage 10: Form Layout -------> */
+
+#registerForm {
+    margin-top: 25px;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #d5deed;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.form-group > input,
+.password-wrapper {
+    width: 100%;
+    min-height: 48px;
+
+    border: 1px solid rgba(218,232,255,0.14);
+    border-radius: 13px;
+
+    background: rgba(9,14,25,0.40);
+
+    transition: 0.25s ease;
+}
+
+.form-group > input {
+    padding: 0 14px;
+
+    outline: none;
+
+    color: var(--text);
+
+    font-family: inherit;
+    font-size: 12px;
+}
+
+.form-group > input::placeholder,
+.password-wrapper input::placeholder {
+    color: #718099;
+}
+
+.form-group > input:focus,
+.password-wrapper:focus-within {
+    border-color: rgba(115,232,255,0.75);
+
+    background: rgba(9,14,25,0.65);
+
+    box-shadow: 0 0 0 3px rgba(115,232,255,0.08);
+}
+
+.form-group small {
+    display: block;
+
+    margin-top: 7px;
+
+    color: #7f8da5;
+
+    font-size: 9px;
+    line-height: 1.5;
+}
+
+
+/* <!------- Stage 11: Password Fields -------> */
+
+.password-wrapper {
+    display: flex;
+    align-items: center;
+
+    padding: 0 13px;
+}
+
+.password-wrapper input {
+    flex: 1;
+
+    width: 100%;
+    min-width: 0;
+
+    padding: 13px 0;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: var(--text);
+
+    font-family: inherit;
+    font-size: 12px;
+}
+
+.password-toggle {
+    padding: 8px 0 8px 9px;
+
+    border: none;
+    background: transparent;
+
+    color: var(--cyan);
+
+    font-family: inherit;
+    font-size: 9px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+/* <!------- Stage 12: Terms -------> */
+
+.terms-row {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 10px;
+
+    margin-top: 20px;
+    margin-bottom: 21px;
+
+    color: #a3afc2;
+
+    font-size: 9px;
+    line-height: 1.7;
+
+    cursor: pointer;
+}
+
+.terms-row input {
+    flex-shrink: 0;
+
+    width: 15px;
+    height: 15px;
+
+    margin-top: 1px;
+
+    accent-color: #63cfea;
+}
+
+
+/* <!------- Stage 13: Register Button -------> */
+
+.register-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 12px;
+
+    width: 100%;
+    min-height: 52px;
+
+    padding: 13px 18px;
+
+    border: 1px solid rgba(115,232,255,0.55);
+    border-radius: 14px;
+
+    background: linear-gradient(
+        100deg,
+        #277da8,
+        #4565b3,
+        #7551b0
+    );
+
+    color: #fff;
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+
+    box-shadow:
+        0 8px 25px rgba(57,138,208,0.18),
+        inset 0 1px 1px rgba(255,255,255,0.20);
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+.register-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+
+    box-shadow: 0 12px 30px rgba(57,138,208,0.28);
+}
+
+.register-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+
+/* <!------- Stage 14: Feedback -------> */
+
+.message-box {
+    margin-top: 15px;
+
+    padding: 12px;
+
+    border: 1px solid rgba(255,113,139,0.25);
+    border-radius: 11px;
+
+    background: rgba(255,113,139,0.08);
+
+    color: #ffabb9;
+
+    font-size: 10px;
+    line-height: 1.6;
+
+    overflow-wrap: anywhere;
+}
+
+.message-box.success {
+    border-color: rgba(115,232,255,0.25);
+
+    background: rgba(115,232,255,0.07);
+
+    color: var(--cyan);
+}
+
+
+/* <!------- Stage 15: Login Link -------> */
+
+.login-link {
+    margin-top: 22px;
+
+    color: #8f9db3;
+
+    font-size: 10px;
+
+    text-align: center;
+}
+
+.login-link a {
+    margin-left: 4px;
+
+    color: var(--cyan);
+
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+
+/* <!------- Stage 16: Footer -------> */
+
+.register-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 24px;
+
+    color: #758198;
+
+    font-size: 8px;
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
+    text-align: center;
+}
+
+.footer-divider {
+    width: 48px;
+    height: 1px;
+
+    margin-bottom: 16px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(115,232,255,0.55),
+        rgba(181,138,255,0.55),
+        transparent
+    );
+}
+
+.register-footer > span {
+    margin-top: 7px;
+
+    color: var(--cyan);
+    font-size: 12px;
+
+    text-shadow: 0 0 8px var(--cyan);
+}
+
+.copyright {
+    margin-top: 8px;
+
+    color: #65728a;
+
+    font-size: 8px;
+    letter-spacing: 1.5px;
+}
+
+
+/* <!------- Stage 17: Animations -------> */
+
+@keyframes card-enter {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes ambient-float {
+    from {
+        transform: translate3d(0,-18px,0) scale(0.92);
+    }
+
+    to {
+        transform: translate3d(20px,22px,0) scale(1.08);
+    }
+}
+
+
+/* <!------- Stage 18: Responsive Layout -------> */
+
+@media (max-width: 380px) {
+
+    .register-page {
+        padding: 18px 12px;
+    }
+
+    .register-container {
+        padding: 28px 19px 22px;
+
+        border-radius: 24px;
+    }
+
+    .welcome-section h2 {
+        font-size: 27px;
+    }
+
+    .form-group {
+        margin-bottom: 14px;
+    }
+
+}
+
+
+/* <!------- Stage 19: Reduced Motion -------> */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+
+}

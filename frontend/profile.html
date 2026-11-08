@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#09111f">
+    <meta name="description" content="Manage your CF Chefs professional profile">
+    <title>My Profile | CF Chefs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="./profile.css">
+    <link rel="stylesheet" href="./tab.css">
+</head>
+
+<body>
+    <div class="ambient ambient-cyan"></div>
+    <div class="ambient ambient-violet"></div>
+
+    <div class="app-shell">
+        <!-- <!------- Stage 1: Main Header -------> -->
+        <main class="main-content" id="profile">
+            <header class="topbar">
+                <div>
+                    <p class="overline">CHEF WORKSPACE</p>
+                    <h1>My Profile</h1>
+                </div>
+                <div class="topbar-meta"><span class="online-dot"></span><span id="profileStatus" aria-live="polite">Loading profile...</span><a class="edit-profile-button" href="./edit.html"><i class="fa-solid fa-pencil"></i><span>Edit Profile</span></a><a class="account-center-button" href="./account.html"><i class="fa-solid fa-user-shield"></i><span>Account Center</span></a><span class="top-avatar" id="topAvatar">AK</span></div>
+            </header>
+
+            <!-- <!------- Stage 3: Profile Hero -------> -->
+            <section class="profile-hero glass-card">
+                <div class="profile-identity">
+                    <div class="profile-photo" aria-label="Chef profile image placeholder"><i class="fa-solid fa-camera"></i><span id="heroAvatar">AK</span></div>
+                    <div class="identity-copy">
+                        <div class="eyebrow"><i class="fa-solid fa-sparkles"></i> PROFESSIONAL PROFILE</div>
+                        <h2 id="heroName">Arjun Kapoor</h2>
+                        <p class="handle" id="heroUsername">@chef_arjun <span class="verified"><i class="fa-solid fa-check"></i> Verification pending</span></p>
+                        <p class="bio" id="heroBio">Passionate chef crafting memorable Indian and contemporary dining experiences.</p>
+                    </div>
+                </div>
+                <div class="hero-action"><span class="status-pill"><i class="fa-solid fa-circle"></i> Profile completion 72%</span><h3>Profile overview</h3><p id="heroMessage">Review your details here. Use Edit Profile to make changes.</p></div>
+            </section>
+
+            <form class="profile-form read-only-profile" action="#" method="post" inert>
+                <!-- <!------- Stage 4: Basic Personal Information -------> -->
+                <section class="form-section glass-card">
+                    <div class="section-heading"><span class="section-icon cyan"><i class="fa-solid fa-id-card"></i></span><div><p class="overline">YOUR DETAILS</p><h2>Basic personal information</h2></div></div>
+                    <div class="field-grid three-columns">
+                        <div class="field"><label for="full-name">Full name</label><input id="full-name" name="full-name" type="text" value="Arjun Kapoor" placeholder="Your full name"></div>
+                        <div class="field"><label for="username">Username</label><input id="username" name="username" type="text" value="chef_arjun" placeholder="Choose a username"></div>
+                        <div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" value="arjun@example.com" placeholder="you@example.com"></div>
+                        <div class="field"><label for="phone">Phone number</label><input id="phone" name="phone" type="tel" placeholder="+91 00000 00000"></div>
+                        <div class="field"><label for="date-of-birth">Date of birth</label><input id="date-of-birth" name="date-of-birth" type="date"></div>
+                        <div class="field"><label for="gender">Gender <span>(optional)</span></label><select id="gender" name="gender"><option value="">Select gender</option><option>Female</option><option>Male</option><option>Non-binary</option><option>Prefer not to say</option></select></div>
+                        <div class="field"><label for="city">City</label><input id="city" name="city" type="text" placeholder="City"></div>
+                        <div class="field"><label for="state">State</label><input id="state" name="state" type="text" placeholder="State"></div>
+                        <div class="field"><label for="country">Country</label><input id="country" name="country" type="text" value="India" placeholder="Country"></div>
+                    </div>
+                </section>
+
+                <!-- <!------- Stage 5: Chef Information -------> -->
+                <section class="form-section glass-card">
+                    <div class="section-heading"><span class="section-icon violet"><i class="fa-solid fa-hat-chef"></i></span><div><p class="overline">YOUR CRAFT</p><h2>Chef information</h2></div></div>
+                    <fieldset class="choice-group"><legend>Choose your cuisines <span>Select all that apply</span></legend><div class="choice-grid cuisine-grid">
+                        <label class="choice-card"><input type="checkbox" name="cuisine" value="indian" checked><span>Indian</span></label><label class="choice-card"><input type="checkbox" name="cuisine" value="north-indian"><span>North Indian</span></label><label class="choice-card"><input type="checkbox" name="cuisine" value="south-indian"><span>South Indian</span></label><label class="choice-card"><input type="checkbox" name="cuisine" value="chinese"><span>Chinese</span></label><label class="choice-card"><input type="checkbox" name="cuisine" value="italian"><span>Italian</span></label><label class="choice-card"><input type="checkbox" name="cuisine" value="mexican"><span>Mexican</span></label><label class="choice-card"><input type="checkbox" name="cuisine" value="continental"><span>Continental</span></label><label class="choice-card"><input type="checkbox" name="cuisine" value="thai"><span>Thai</span></label><label class="choice-card"><input type="checkbox" name="cuisine" value="mughlai"><span>Mughlai</span></label><label class="choice-card"><input type="checkbox" name="cuisine" value="other"><span>Other</span></label>
+                    </div></fieldset>
+                    <div class="field-grid two-columns compact-top"><div class="field"><label for="other-cuisines">Other cuisines</label><input id="other-cuisines" name="other-cuisines" type="text" placeholder="Tell us about other cuisines"></div><div class="field"><label for="signature-dishes">Signature dishes</label><input id="signature-dishes" name="signature-dishes" type="text" placeholder="e.g. Butter chicken, tiramisu"></div></div>
+                    <fieldset class="choice-group"><legend>Food preferences <span>Select all that apply</span></legend><div class="choice-grid food-grid"><label class="choice-card"><input type="checkbox" name="preference" value="vegetarian"><span>Vegetarian</span></label><label class="choice-card"><input type="checkbox" name="preference" value="non-vegetarian"><span>Non-vegetarian</span></label><label class="choice-card"><input type="checkbox" name="preference" value="vegan"><span>Vegan</span></label><label class="choice-card"><input type="checkbox" name="preference" value="jain"><span>Jain</span></label><label class="choice-card"><input type="checkbox" name="preference" value="eggetarian"><span>Eggetarian</span></label></div></fieldset>
+                    <div class="field"><label for="specialities">Cooking specialities</label><textarea id="specialities" name="specialities" rows="3" placeholder="Describe the techniques and dishes you are known for"></textarea></div>
+                </section>
+
+                <!-- <!------- Stage 6: Pricing Information -------> -->
+                <section class="form-section glass-card">
+                    <div class="section-heading"><span class="section-icon blue"><i class="fa-solid fa-indian-rupee-sign"></i></span><div><p class="overline">YOUR RATES</p><h2>Pricing information</h2></div></div>
+                    <div class="field-grid two-columns"><div class="field"><label for="min-price">Minimum price <span>(₹)</span></label><div class="input-prefix"><span>₹</span><input id="min-price" name="min-price" type="number" min="0" placeholder="2,000"></div></div><div class="field"><label for="max-price">Maximum price <span>(₹)</span></label><div class="input-prefix"><span>₹</span><input id="max-price" name="max-price" type="number" min="0" placeholder="25,000"></div></div><div class="field"><label for="ingredient-policy">Ingredient cost policy</label><select id="ingredient-policy" name="ingredient-policy"><option value="">Select a policy</option><option>Included in my price</option><option>Paid by the client</option><option>Discuss per booking</option></select></div><div class="field"><label for="additional-charges">Additional charges</label><input id="additional-charges" name="additional-charges" type="text" placeholder="Travel, equipment, etc."></div><div class="field"><label for="booking-size">Minimum booking size</label><input id="booking-size" name="booking-size" type="text" placeholder="e.g. 4 guests"></div><div class="field"><label for="booking-duration">Minimum booking duration</label><input id="booking-duration" name="booking-duration" type="text" placeholder="e.g. 3 hours"></div></div>
+                    <fieldset class="choice-group pricing-method"><legend>Pricing method <span>Choose your preferred structure</span></legend><div class="choice-grid method-grid"><label class="choice-card"><input type="radio" name="pricing-method" value="person"><span>Per person</span></label><label class="choice-card"><input type="radio" name="pricing-method" value="meal"><span>Per meal</span></label><label class="choice-card"><input type="radio" name="pricing-method" value="day"><span>Per day</span></label><label class="choice-card"><input type="radio" name="pricing-method" value="event"><span>Per event</span></label><label class="choice-card"><input type="radio" name="pricing-method" value="package"><span>Custom package</span></label></div></fieldset>
+                </section>
+
+                <!-- <!------- Stage 7: About the Chef -------> -->
+                <section class="form-section glass-card">
+                    <div class="section-heading"><span class="section-icon orange"><i class="fa-solid fa-award"></i></span><div><p class="overline">YOUR STORY</p><h2>About the chef</h2></div></div>
+                    <div class="field-grid three-columns"><div class="field"><label for="experience">Years of experience</label><input id="experience" name="experience" type="number" min="0" placeholder="e.g. 8"></div><div class="field"><label for="speciality">Professional speciality</label><input id="speciality" name="speciality" type="text" placeholder="e.g. Modern Indian"></div><div class="field"><label for="languages">Languages spoken</label><input id="languages" name="languages" type="text" placeholder="e.g. English, Hindi"></div></div>
+                    <div class="field"><label for="training">Culinary training or education</label><input id="training" name="training" type="text" placeholder="School, course, apprenticeship or mentor"></div>
+                    <div class="field"><label for="about">About yourself</label><textarea id="about" name="about" rows="6" placeholder="Share your culinary journey, approach and what guests can expect when they book you."></textarea></div>
+                    <div class="field"><label for="achievements">Professional achievements</label><textarea id="achievements" name="achievements" rows="4" placeholder="Awards, press features, notable events or recognitions"></textarea></div>
+                </section>
+
+                <!-- <!------- Stage 8: Services and Availability -------> -->
+                <section class="form-section glass-card">
+                    <div class="section-heading"><span class="section-icon cyan"><i class="fa-solid fa-calendar-days"></i></span><div><p class="overline">HOW YOU WORK</p><h2>Services and availability</h2></div></div>
+                    <fieldset class="choice-group"><legend>Services offered <span>Select all that apply</span></legend><div class="choice-grid service-grid"><label class="choice-card"><input type="checkbox" name="service" value="home-cooking"><span>Home cooking</span></label><label class="choice-card"><input type="checkbox" name="service" value="private-chef"><span>Private chef</span></label><label class="choice-card"><input type="checkbox" name="service" value="party-catering"><span>Party catering</span></label><label class="choice-card"><input type="checkbox" name="service" value="wedding-catering"><span>Wedding catering</span></label><label class="choice-card"><input type="checkbox" name="service" value="event-catering"><span>Event catering</span></label><label class="choice-card"><input type="checkbox" name="service" value="meal-preparation"><span>Meal preparation</span></label><label class="choice-card"><input type="checkbox" name="service" value="cooking-classes"><span>Cooking classes</span></label><label class="choice-card"><input type="checkbox" name="service" value="restaurant-consulting"><span>Restaurant consulting</span></label></div></fieldset>
+                    <div class="field-grid three-columns compact-top"><div class="field"><label for="areas-served">Areas served</label><input id="areas-served" name="areas-served" type="text" placeholder="Cities, neighbourhoods or regions"></div><div class="field"><label for="travel-distance">Maximum travel distance</label><input id="travel-distance" name="travel-distance" type="text" placeholder="e.g. 50 km"></div><div class="field"><label for="max-guests">Maximum guests</label><input id="max-guests" name="max-guests" type="number" min="1" placeholder="e.g. 100"></div></div>
+                    <fieldset class="availability-group"><legend>Availability</legend><div class="toggle-grid"><label class="toggle-card"><input type="checkbox" name="availability" value="weekday"><span class="toggle"><i></i></span><span>Weekday availability</span></label><label class="toggle-card"><input type="checkbox" name="availability" value="weekend"><span class="toggle"><i></i></span><span>Weekend availability</span></label><label class="toggle-card"><input type="checkbox" name="availability" value="evening"><span class="toggle"><i></i></span><span>Evening availability</span></label><label class="toggle-card"><input type="checkbox" name="availability" value="flexible"><span class="toggle"><i></i></span><span>Flexible availability</span></label></div></fieldset>
+                </section>
+
+                <!-- <!------- Stage 9: Portfolio and Credentials -------> -->
+                <section class="form-section glass-card">
+                    <div class="section-heading"><span class="section-icon violet"><i class="fa-solid fa-folder-open"></i></span><div><p class="overline">BUILD TRUST</p><h2>Portfolio and credentials</h2></div></div>
+                    <div class="upload-grid"><label class="upload-zone" for="food-photos"><input id="food-photos" name="food-photos" type="file" accept="image/*" multiple><i class="fa-solid fa-images"></i><strong>Food photography</strong><span>Drop images here or <b>browse files</b></span><small>PNG, JPG up to 10MB each</small></label><label class="upload-zone" for="certificates"><input id="certificates" name="certificates" type="file" accept=".pdf,.jpg,.jpeg,.png" multiple><i class="fa-solid fa-file-certificate"></i><strong>Certificates</strong><span>Drop documents here or <b>browse files</b></span><small>PDF, JPG or PNG up to 10MB</small></label></div>
+                    <div class="field-grid two-columns compact-top"><div class="field"><label for="fssai">FSSAI registration number</label><input id="fssai" name="fssai" type="text" placeholder="Enter registration number"></div><div class="field"><label for="qualification">Professional qualification details</label><input id="qualification" name="qualification" type="text" placeholder="Qualification, institute and year"></div></div>
+                </section>
+
+                <!-- <!------- Stage 10: Account Information -------> -->
+                <section class="form-section glass-card">
+                    <div class="section-heading"><span class="section-icon blue"><i class="fa-solid fa-shield-halved"></i></span><div><p class="overline">ACCOUNT OVERVIEW</p><h2>Account information</h2></div></div>
+                    <div class="account-grid"><div class="account-item"><span>Chef ID</span><strong id="chefId">CF-000184</strong></div><div class="account-item"><span>ATC</span><strong id="atcCode">—</strong></div><div class="account-item"><span>Member since</span><strong id="joinedDate">January 2024</strong></div><div class="account-item"><span>Account type</span><strong id="accountType">Professional</strong></div><div class="account-item"><span>Verification status</span><strong class="pending-text" id="verificationStatus"><i class="fa-solid fa-clock"></i> Pending review</strong></div></div>
+                </section>
+
+                <!-- <!------- Stage 11: Save Section -------> -->
+                <section class="save-section">
+                    <div><p><i class="fa-solid fa-lock"></i> Your information is private and protected.</p><small>This is your profile overview. Select Edit Profile above to update your details.</small></div>
+                    <a class="button primary" href="./edit.html"><i class="fa-solid fa-pencil"></i> Edit Profile</a>
+                </section>
+            </form>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+    <script src="./supabase-config.js" defer></script>
+    <script src="./profile.js" defer></script>
+    <script src="./tab.js" defer></script>
+</body>
+</html>

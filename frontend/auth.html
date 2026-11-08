@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#171b27">
+    <meta name="description" content="Join CF Chef. Login or create your chef account.">
+
+    <title>CF Chef | Authentication</title>
+
+    <link rel="stylesheet" href="./auth.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+    <main class="auth-page">
+
+        <div class="grid-overlay"></div>
+
+        <div class="ambient ambient-cyan"></div>
+        <div class="ambient ambient-violet"></div>
+        <div class="ambient ambient-blue"></div>
+
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
+
+        <section class="auth-container">
+
+            <header class="brand-header">
+
+                <div class="logo-shell">
+
+                    <img
+                        src="./assets/img/logo.png"
+                        alt="CF Chef"
+                        class="brand-logo"
+                        id="brandLogo"
+                    >
+
+                    <span class="logo-fallback" id="logoFallback">
+                        CF
+                    </span>
+
+                </div>
+
+                <div class="brand-name">
+                    CF <span>CHEF</span>
+                </div>
+
+                <p class="brand-tagline">
+                    YOUR TALENT. YOUR KITCHEN. YOUR FUTURE.
+                </p>
+
+            </header>
+
+
+            <div class="welcome-content">
+
+                <div class="welcome-badge">
+                    <span class="status-dot"></span>
+                    CHEF COMMUNITY ACCESS
+                </div>
+
+                <h1>
+                    Your Kitchen.<br>
+                    <span>Your Journey.</span>
+                </h1>
+
+                <p class="welcome-description">
+                    A place where your passion meets opportunity.
+                    Start building your culinary journey with CF Chef.
+                </p>
+
+            </div>
+
+
+            <div class="auth-options">
+
+                <a href="./login.html" class="auth-card login-card">
+
+                    <div class="card-icon login-icon">
+                        <span>↗</span>
+                    </div>
+
+                    <div class="card-content">
+
+                        <span class="card-label">
+                            ALREADY A MEMBER?
+                        </span>
+
+                        <h2>Login</h2>
+
+                        <p>
+                            Continue your journey and access your chef dashboard.
+                        </p>
+
+                    </div>
+
+                    <div class="card-arrow">
+                        →
+                    </div>
+
+                </a>
+
+
+                <a href="./register.html" class="auth-card register-card">
+
+                    <div class="card-icon register-icon">
+                        <span>✦</span>
+                    </div>
+
+                    <div class="card-content">
+
+                        <span class="card-label">
+                            NEW TO CF CHEF?
+                        </span>
+
+                        <h2>Register</h2>
+
+                        <p>
+                            Create your account and bring your talent to the table.
+                        </p>
+
+                    </div>
+
+                    <div class="card-arrow">
+                        →
+                    </div>
+
+                </a>
+
+            </div>
+
+
+            <div class="status-message" id="statusMessage" role="status" aria-live="polite">
+
+                <span class="status-indicator"></span>
+
+                <span id="statusText">
+                    Connecting to your culinary journey
+                </span>
+
+            </div>
+
+
+            <footer class="auth-footer">
+
+                <div class="footer-divider"></div>
+
+                <p>
+                    MADE FOR THE LOVE OF COOKING
+                </p>
+
+                <span class="footer-star">✦</span>
+
+                <p class="copyright">
+                    © <span id="year"></span> CF CHEF
+                </p>
+
+            </footer>
+
+        </section>
+
+    </main>
+
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+        defer>
+    </script>
+
+    <script src="./supabase-config.js" defer></script>
+
+    <script src="./auth.js" defer></script>
+
+</body>
+
+</html>

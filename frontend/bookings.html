@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080d1b">
+    <meta name="description" content="Manage your CF Chef bookings.">
+
+    <title>Bookings | CF Chef</title>
+
+    <link rel="stylesheet" href="./bookings.css">
+    <link rel="stylesheet" href="./tab.css">
+
+</head>
+
+<body>
+
+    <div class="app">
+
+        <main class="main">
+
+            <header class="topbar">
+
+                <div class="topbar-inner">
+
+                    <div class="topbar-text">
+                        <h1>My Bookings</h1>
+                        <p>Manage your customer booking requests.</p>
+                    </div>
+
+                </div>
+
+                <button id="refreshBtn" class="refresh-btn" type="button">
+                    ↻ Refresh
+                </button>
+
+            </header>
+
+
+            <section class="stats">
+
+                <article class="stat-card">
+                    <span>All bookings</span>
+                    <strong id="totalCount">0</strong>
+                </article>
+
+                <article class="stat-card pending-card">
+                    <span>Pending</span>
+                    <strong id="pendingCount">0</strong>
+                </article>
+
+                <article class="stat-card accepted-card">
+                    <span>Accepted</span>
+                    <strong id="acceptedCount">0</strong>
+                </article>
+
+                <article class="stat-card completed-card">
+                    <span>Completed</span>
+                    <strong id="completedCount">0</strong>
+                </article>
+
+            </section>
+
+
+            <section class="booking-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>Booking requests</h2>
+                        <p>Requests assigned to your chef account.</p>
+                    </div>
+
+                    <input
+                        type="search"
+                        id="searchInput"
+                        placeholder="Search customer..."
+                        autocomplete="off"
+                    >
+
+                </div>
+
+                <div class="filters" id="filters">
+                    <button class="filter active" data-status="all" type="button">All</button>
+                    <button class="filter" data-status="pending" type="button">Pending</button>
+                    <button class="filter" data-status="accepted" type="button">Accepted</button>
+                    <button class="filter" data-status="rejected" type="button">Rejected</button>
+                    <button class="filter" data-status="completed" type="button">Completed</button>
+                    <button class="filter" data-status="cancelled" type="button">Cancelled</button>
+                </div>
+
+                <div id="bookingList" class="booking-list">
+                    <div class="loading">Loading your bookings...</div>
+                </div>
+
+                <div id="message" class="message" role="status" aria-live="polite"></div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <div class="modal" id="detailsModal" role="dialog" aria-modal="true" aria-labelledby="detailsTitle">
+
+        <div class="modal-content">
+
+            <button class="modal-close" data-close="detailsModal" type="button" aria-label="Close">×</button>
+
+            <h2 id="detailsTitle">Booking details</h2>
+
+            <div id="bookingDetails"></div>
+
+        </div>
+
+    </div>
+
+
+    <div class="modal" id="responseModal" role="dialog" aria-modal="true" aria-labelledby="responseTitle">
+
+        <div class="modal-content">
+
+            <button class="modal-close" data-close="responseModal" type="button" aria-label="Close">×</button>
+
+            <h2 id="responseTitle">Booking response</h2>
+
+            <p id="responseDescription"></p>
+
+            <label for="responseNote">Note (optional)</label>
+
+            <textarea
+                id="responseNote"
+                rows="4"
+                placeholder="Write a message for the customer..."
+            ></textarea>
+
+            <div class="modal-actions">
+
+                <button id="responseCancel" class="secondary-btn" type="button">Cancel</button>
+
+                <button id="responseConfirm" class="primary-btn" type="button">Confirm</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="modal" id="cancelModal" role="dialog" aria-modal="true" aria-labelledby="cancelTitle">
+
+        <div class="modal-content">
+
+            <button class="modal-close" data-close="cancelModal" type="button" aria-label="Close">×</button>
+
+            <h2 id="cancelTitle">Cancel booking</h2>
+
+            <p>Please provide a cancellation reason.</p>
+
+            <label for="cancellationReason">Cancellation reason</label>
+
+            <textarea
+                id="cancellationReason"
+                rows="4"
+                placeholder="Enter cancellation reason..."
+            ></textarea>
+
+            <div class="modal-actions">
+
+                <button id="cancelBack" class="secondary-btn" type="button">Go back</button>
+
+                <button id="cancelConfirm" class="danger-btn" type="button">Cancel booking</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="./supabase-config.js"></script>
+    <script src="./bookings.js"></script>
+    <script src="./tab.js"></script>
+
+</body>
+
+</html>

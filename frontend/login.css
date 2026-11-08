@@ -1,0 +1,789 @@
+/* <!------- Stage 1: Design Tokens -------> */
+
+:root {
+color-scheme: dark;
+
+--background: #171b27;
+--cyan: #73e8ff;
+--blue: #4e9eff;
+--violet: #b58aff;
+
+--text: #f4f7ff;
+--muted: #9ca8bd;
+
+--glass-border: rgba(218,232,255,0.17);
+
+}
+
+/* <!------- Stage 2: Reset -------> */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
+
+body {
+min-height: 100vh;
+min-height: 100dvh;
+
+font-family: "Inter", system-ui, sans-serif;
+
+color: var(--text);
+
+background: var(--background);
+
+-webkit-font-smoothing: antialiased;
+-webkit-tap-highlight-color: transparent;
+
+}
+
+/* <!------- Stage 3: Main Background -------> */
+
+.login-page {
+position: relative;
+isolation: isolate;
+
+display: flex;
+justify-content: center;
+align-items: center;
+
+min-height: 100vh;
+min-height: 100dvh;
+
+padding: 30px 18px;
+
+overflow: hidden;
+
+background:
+    radial-gradient(
+        ellipse at 50% 42%,
+        rgba(51,75,117,0.25),
+        transparent 55%
+    ),
+    linear-gradient(
+        145deg,
+        #202634,
+        #171b27 48%,
+        #10131d
+    );
+
+}
+
+/* <!------- Stage 4: Background Grid -------> */
+
+.grid-overlay {
+position: fixed;
+inset: 0;
+
+z-index: -3;
+
+opacity: 0.13;
+
+pointer-events: none;
+
+background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+
+background-size: 42px 42px;
+
+}
+
+/* <!------- Stage 5: Ambient Lights -------> */
+
+.ambient {
+position: fixed;
+
+z-index: -2;
+
+width: 280px;
+height: 280px;
+
+border-radius: 50%;
+
+filter: blur(90px);
+
+opacity: 0.35;
+
+pointer-events: none;
+
+}
+
+.ambient-cyan {
+top: 5%;
+left: -150px;
+
+background: #168dff;
+
+animation: ambient-float 8s ease-in-out infinite alternate;
+
+}
+
+.ambient-violet {
+right: -150px;
+bottom: 5%;
+
+background: #883dff;
+
+animation: ambient-float 9s ease-in-out infinite alternate-reverse;
+
+}
+
+.ambient-blue {
+top: 40%;
+left: 50%;
+
+width: 190px;
+height: 190px;
+
+background: #25d9ff;
+
+opacity: 0.12;
+
+transform: translateX(-50%);
+
+animation: center-pulse 5s ease-in-out infinite alternate;
+
+}
+
+/* <!------- Stage 6: Login Card -------> */
+
+.login-container {
+position: relative;
+isolation: isolate;
+
+width: min(100%, 420px);
+
+padding: 34px 29px 25px;
+
+overflow: hidden;
+
+border: 1px solid var(--glass-border);
+border-radius: 29px;
+
+background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.09),
+    rgba(255,255,255,0.025) 48%,
+    rgba(109,126,180,0.065)
+);
+
+box-shadow:
+    0 30px 80px rgba(0,0,0,0.32),
+    inset 0 1px 1px rgba(255,255,255,0.15);
+
+backdrop-filter: blur(25px);
+-webkit-backdrop-filter: blur(25px);
+
+animation: card-enter 0.8s ease both;
+
+}
+
+/* <!------- Stage 7: Back Button -------> */
+
+.back-button {
+position: absolute;
+
+top: 19px;
+left: 19px;
+
+display: grid;
+place-items: center;
+
+width: 34px;
+height: 34px;
+
+border: 1px solid rgba(255,255,255,0.12);
+border-radius: 11px;
+
+background: rgba(255,255,255,0.045);
+
+color: #b9c8dd;
+
+font-size: 20px;
+
+text-decoration: none;
+
+transition: 0.25s ease;
+
+}
+
+.back-button:hover {
+border-color: var(--cyan);
+color: var(--cyan);
+
+transform: translateX(-3px);
+
+}
+
+/* <!------- Stage 8: Brand Header -------> */
+
+.brand-header {
+display: flex;
+flex-direction: column;
+align-items: center;
+
+text-align: center;
+
+}
+
+.logo-shell {
+position: relative;
+
+display: grid;
+place-items: center;
+
+width: 70px;
+height: 70px;
+
+overflow: hidden;
+
+border: 1px solid rgba(115,232,255,0.45);
+border-radius: 50%;
+
+background: linear-gradient(145deg,#343e56,#171b27);
+
+box-shadow:
+    0 0 25px rgba(67,213,255,0.16),
+    0 0 45px rgba(157,94,255,0.10);
+
+}
+
+.logo-shell img {
+width: 100%;
+height: 100%;
+
+object-fit: cover;
+border-radius: inherit;
+
+}
+
+#logoFallback {
+position: absolute;
+inset: 0;
+
+display: none;
+place-items: center;
+
+background: linear-gradient(135deg,#3c5e85,#514079);
+
+font-size: 25px;
+font-weight: 800;
+
+}
+
+.brand-header h1 {
+margin-top: 13px;
+
+font-size: 24px;
+font-weight: 800;
+
+letter-spacing: 4px;
+
+}
+
+.brand-header h1 span {
+color: transparent;
+
+background: linear-gradient(100deg,#73e8ff,#c5a2ff);
+
+background-clip: text;
+-webkit-background-clip: text;
+
+}
+
+.brand-tagline {
+margin-top: 7px;
+
+color: #8999b3;
+
+font-size: 8px;
+font-weight: 600;
+
+letter-spacing: 1.4px;
+
+}
+
+/* <!------- Stage 9: Welcome Section -------> */
+
+.welcome-section {
+margin-top: 32px;
+
+text-align: center;
+
+}
+
+.welcome-badge {
+display: inline-flex;
+align-items: center;
+
+gap: 8px;
+
+padding: 8px 12px;
+
+border: 1px solid rgba(115,232,255,0.16);
+border-radius: 50px;
+
+background: rgba(115,232,255,0.045);
+
+color: #a9bbd4;
+
+font-size: 8px;
+font-weight: 700;
+
+letter-spacing: 1.2px;
+
+}
+
+.status-dot {
+width: 6px;
+height: 6px;
+
+border-radius: 50%;
+
+background: var(--cyan);
+
+box-shadow: 0 0 9px var(--cyan);
+
+}
+
+.welcome-section h2 {
+margin-top: 19px;
+
+font-size: 34px;
+font-weight: 800;
+
+letter-spacing: -1px;
+
+}
+
+.welcome-section h2 span {
+color: transparent;
+
+background: linear-gradient(100deg,#73e8ff,#b58aff);
+
+background-clip: text;
+-webkit-background-clip: text;
+
+}
+
+.welcome-section p {
+margin-top: 9px;
+
+color: var(--muted);
+
+font-size: 11px;
+line-height: 1.7;
+
+}
+
+/* <!------- Stage 10: Form Layout -------> */
+
+#loginForm {
+margin-top: 29px;
+}
+
+.form-group {
+margin-bottom: 19px;
+}
+
+.form-group label {
+display: block;
+
+margin-bottom: 9px;
+
+color: #d5deed;
+
+font-size: 11px;
+font-weight: 600;
+
+}
+
+.input-wrapper {
+display: flex;
+align-items: center;
+
+min-height: 52px;
+
+padding: 0 14px;
+
+border: 1px solid rgba(218,232,255,0.14);
+border-radius: 14px;
+
+background: rgba(9,14,25,0.40);
+
+transition: 0.25s ease;
+
+}
+
+.input-wrapper:focus-within {
+border-color: rgba(115,232,255,0.75);
+
+background: rgba(9,14,25,0.65);
+
+box-shadow: 0 0 0 3px rgba(115,232,255,0.08);
+
+}
+
+.input-icon {
+flex-shrink: 0;
+
+margin-right: 11px;
+
+color: var(--cyan);
+
+font-size: 16px;
+
+}
+
+.input-wrapper input {
+flex: 1;
+
+width: 100%;
+min-width: 0;
+
+padding: 14px 0;
+
+border: none;
+outline: none;
+
+background: transparent;
+
+color: var(--text);
+
+font-family: inherit;
+font-size: 12px;
+
+}
+
+.input-wrapper input::placeholder {
+color: #718099;
+}
+
+.input-wrapper input:-webkit-autofill,
+.input-wrapper input:-webkit-autofill:hover,
+.input-wrapper input:-webkit-autofill:focus {
+-webkit-text-fill-color: var(--text);
+
+box-shadow: 0 0 0 1000px #1a2130 inset;
+
+}
+
+/* <!------- Stage 11: Password Toggle -------> */
+
+.password-toggle {
+flex-shrink: 0;
+
+padding: 8px 0 8px 9px;
+
+border: none;
+background: transparent;
+
+color: var(--cyan);
+
+font-family: inherit;
+font-size: 9px;
+font-weight: 700;
+
+letter-spacing: 0.5px;
+
+cursor: pointer;
+
+}
+
+/* <!------- Stage 12: Form Extras -------> */
+
+.form-extras {
+display: flex;
+justify-content: flex-end;
+
+margin-top: -5px;
+margin-bottom: 22px;
+
+}
+
+.forgot-link {
+color: #9fbcdb;
+
+font-size: 10px;
+font-weight: 600;
+
+text-decoration: none;
+
+transition: 0.2s ease;
+
+}
+
+.forgot-link:hover {
+color: var(--cyan);
+}
+
+/* <!------- Stage 13: Login Button -------> */
+
+.login-button {
+display: flex;
+justify-content: center;
+align-items: center;
+
+gap: 12px;
+
+width: 100%;
+min-height: 53px;
+
+padding: 13px 18px;
+
+border: 1px solid rgba(115,232,255,0.55);
+border-radius: 14px;
+
+background: linear-gradient(
+    100deg,
+    #277da8,
+    #4565b3,
+    #7551b0
+);
+
+color: #ffffff;
+
+font-family: inherit;
+font-size: 12px;
+font-weight: 700;
+
+box-shadow:
+    0 8px 25px rgba(57,138,208,0.18),
+    inset 0 1px 1px rgba(255,255,255,0.20);
+
+cursor: pointer;
+
+transition: 0.25s ease;
+
+}
+
+.login-button:hover:not(:disabled) {
+transform: translateY(-2px);
+
+box-shadow:
+    0 12px 30px rgba(57,138,208,0.28),
+    inset 0 1px 1px rgba(255,255,255,0.25);
+
+}
+
+.login-button:active:not(:disabled) {
+transform: scale(0.98);
+}
+
+.login-button:disabled {
+opacity: 0.6;
+cursor: not-allowed;
+}
+
+.button-arrow {
+font-size: 17px;
+}
+
+/* <!------- Stage 14: Feedback -------> */
+
+.message-box {
+margin-top: 15px;
+
+padding: 12px;
+
+border: 1px solid rgba(255,113,139,0.25);
+border-radius: 11px;
+
+background: rgba(255,113,139,0.08);
+
+color: #ffabb9;
+
+font-size: 10px;
+line-height: 1.6;
+
+overflow-wrap: anywhere;
+
+}
+
+.message-box.success {
+border-color: rgba(115,232,255,0.25);
+
+background: rgba(115,232,255,0.07);
+
+color: var(--cyan);
+
+}
+
+/* <!------- Stage 15: Registration Link -------> */
+
+.register-link {
+margin-top: 23px;
+
+color: #8f9db3;
+
+font-size: 10px;
+
+text-align: center;
+
+}
+
+.register-link a {
+margin-left: 4px;
+
+color: var(--cyan);
+
+font-weight: 700;
+
+text-decoration: none;
+
+}
+
+.register-link a:hover {
+text-decoration: underline;
+}
+
+/* <!------- Stage 16: Footer -------> */
+
+.login-footer {
+display: flex;
+flex-direction: column;
+align-items: center;
+
+margin-top: 25px;
+
+color: #758198;
+
+font-size: 8px;
+font-weight: 600;
+
+letter-spacing: 1px;
+
+text-align: center;
+
+}
+
+.footer-divider {
+width: 48px;
+height: 1px;
+
+margin-bottom: 16px;
+
+background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(115,232,255,0.55),
+    rgba(181,138,255,0.55),
+    transparent
+);
+
+}
+
+.footer-star {
+margin-top: 7px;
+
+color: var(--cyan);
+
+font-size: 12px;
+text-shadow: 0 0 8px var(--cyan);
+
+}
+
+.copyright {
+margin-top: 8px;
+
+color: #65728a;
+
+font-size: 8px;
+letter-spacing: 1.5px;
+
+}
+
+/* <!------- Stage 17: Animations -------> */
+
+@keyframes card-enter {
+from {
+opacity: 0;
+transform: translateY(20px) scale(0.97);
+}
+
+to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+}
+
+@keyframes ambient-float {
+from {
+transform: translate3d(0,-18px,0) scale(0.92);
+}
+
+to {
+    transform: translate3d(20px,22px,0) scale(1.08);
+}
+
+}
+
+@keyframes center-pulse {
+from {
+opacity: 0.08;
+scale: 0.85;
+}
+
+to {
+    opacity: 0.19;
+    scale: 1.15;
+}
+
+}
+
+/* <!------- Stage 18: Responsive Layout -------> */
+
+@media (max-width: 380px) {
+
+.login-page {
+    padding: 20px 14px;
+}
+
+.login-container {
+    padding: 29px 20px 22px;
+
+    border-radius: 24px;
+}
+
+.welcome-section h2 {
+    font-size: 30px;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+}
+
+/* <!------- Stage 19: Short Screen Support -------> */
+
+@media (max-height: 700px) {
+
+.login-page {
+    align-items: flex-start;
+    overflow-y: auto;
+}
+
+.login-container {
+    margin: auto 0;
+}
+
+}
+
+/* <!------- Stage 20: Reduced Motion -------> */
+
+@media (prefers-reduced-motion: reduce) {
+
+*,
+*::before,
+*::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+}
+
+}

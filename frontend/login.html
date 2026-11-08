@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#171b27">
+    <meta name="description" content="Login to your CF Chef account.">
+
+    <title>CF Chef | Login</title>
+
+    <link rel="stylesheet" href="./login.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <main class="login-page">
+
+        <div class="grid-overlay"></div>
+
+        <div class="ambient ambient-cyan"></div>
+        <div class="ambient ambient-violet"></div>
+        <div class="ambient ambient-blue"></div>
+
+
+        <section class="login-container">
+
+            <header class="brand-header">
+
+                <a href="./auth.html" class="back-button" aria-label="Back to authentication choices">
+                    ←
+                </a>
+
+                <div class="logo-shell">
+
+                    <img
+                        src="./assets/img/logo.png"
+                        alt="CF Chef Logo"
+                        id="brandLogo"
+                    >
+
+                    <span id="logoFallback">CF</span>
+
+                </div>
+
+                <h1>CF <span>CHEF</span></h1>
+
+                <p class="brand-tagline">
+                    YOUR TALENT. YOUR KITCHEN. YOUR FUTURE.
+                </p>
+
+            </header>
+
+
+            <section class="welcome-section">
+
+                <div class="welcome-badge">
+                    <span class="status-dot"></span>
+                    CHEF MEMBER ACCESS
+                </div>
+
+                <h2>Welcome <span>Back.</span></h2>
+
+                <p>
+                    Sign in to continue your culinary journey.
+                </p>
+
+            </section>
+
+
+            <form id="loginForm" autocomplete="on" novalidate>
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">✉</span>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email address"
+                            autocomplete="username"
+                            maxlength="254"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">⌑</span>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            maxlength="128"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            id="passwordToggle"
+                            aria-label="Show password"
+                        >
+                            SHOW
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-extras">
+
+                    <a href="./forgot-password.html" class="forgot-link">
+                        Forgot password?
+                    </a>
+
+                </div>
+
+
+                <button type="submit" class="login-button" id="loginButton">
+
+                    <span id="buttonText">Login to CF Chef</span>
+
+                    <span class="button-arrow">→</span>
+
+                </button>
+
+
+                <div
+                    class="message-box"
+                    id="messageBox"
+                    role="status"
+                    aria-live="polite"
+                    hidden
+                >
+                    <span id="messageText"></span>
+                </div>
+
+            </form>
+
+
+            <div class="register-link">
+
+                Don't have a chef account?
+
+                <a href="./register.html">
+                    Create Account
+                </a>
+
+            </div>
+
+
+            <footer class="login-footer">
+
+                <div class="footer-divider"></div>
+
+                <p>MADE FOR THE LOVE OF COOKING</p>
+
+                <span class="footer-star">✦</span>
+
+                <p class="copyright">
+                    © <span id="year"></span> CF CHEF
+                </p>
+
+            </footer>
+
+        </section>
+
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+
+    <script src="./supabase-config.js" defer></script>
+
+    <script src="./login.js" defer></script>
+
+</body>
+
+</html>

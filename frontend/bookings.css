@@ -1,0 +1,549 @@
+/* <!------- Stage 1: Global Configuration -------> */
+
+:root {
+    --bg: #080d1b;
+    --sidebar: #0d1426;
+    --card: #111c32;
+    --card-light: #17243d;
+    --border: rgba(255,255,255,.08);
+    --text: #f4f7ff;
+    --muted: #91a0ba;
+    --cyan: #36d8e8;
+    --blue: #518bff;
+    --purple: #a879ff;
+    --green: #36d69a;
+    --red: #ff657b;
+    --yellow: #ffc76a;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 80% 0%, #172b4c 0%, transparent 35%),
+        var(--bg);
+    color: var(--text);
+    font-family: Inter, Arial, sans-serif;
+}
+
+button, input, textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* <!------- Stage 2: Main Layout -------> */
+
+.app {
+    min-height: 100vh;
+    display: flex;
+}
+
+.sidebar {
+    width: 245px;
+    background: var(--sidebar);
+    border-right: 1px solid var(--border);
+    padding: 25px 17px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    inset: 0 auto 0 0;
+    z-index: 20;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 5px 7px 35px;
+}
+
+.brand-icon {
+    width: 43px;
+    height: 43px;
+    display: grid;
+    place-items: center;
+    border-radius: 13px;
+    background: linear-gradient(135deg, var(--cyan), var(--blue));
+    color: #07101e;
+    font-weight: 900;
+}
+
+.brand h2 {
+    font-size: 18px;
+}
+
+.brand span {
+    font-size: 11px;
+    color: var(--muted);
+}
+
+.navigation {
+    display: grid;
+    gap: 9px;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: var(--muted);
+    padding: 14px;
+    border-radius: 11px;
+    display: flex;
+    gap: 13px;
+    align-items: center;
+    font-size: 14px;
+}
+
+.navigation a.active,
+.navigation a:hover {
+    color: var(--cyan);
+    background: rgba(54,216,232,.10);
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+}
+
+.logout-btn {
+    width: 100%;
+    padding: 13px;
+    background: rgba(255,101,123,.08);
+    color: var(--red);
+    border: 1px solid rgba(255,101,123,.15);
+    border-radius: 10px;
+}
+
+/* <!------- Stage 3: Main Content -------> */
+
+.main {
+    width: 100%;
+    margin-left: 0;
+    padding: 35px;
+}
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.topbar h1 {
+    font-size: clamp(23px, 4vw, 32px);
+}
+
+.topbar p,
+.section-heading p {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 7px;
+}
+
+.refresh-btn,
+.menu-btn {
+    background: var(--card-light);
+    border: 1px solid var(--border);
+    color: var(--cyan);
+    padding: 11px 16px;
+    border-radius: 10px;
+}
+
+.menu-btn {
+    display: none;
+}
+
+/* <!------- Stage 4: Statistics -------> */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 32px;
+}
+
+.stat-card {
+    background: linear-gradient(145deg, var(--card), #101a2e);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.stat-card span {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.stat-card strong {
+    display: block;
+    margin-top: 12px;
+    font-size: 29px;
+}
+
+.pending-card strong {
+    color: var(--yellow);
+}
+
+.accepted-card strong {
+    color: var(--cyan);
+}
+
+.completed-card strong {
+    color: var(--green);
+}
+
+/* <!------- Stage 5: Booking Section -------> */
+
+.booking-section {
+    background: rgba(17,28,50,.82);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 23px;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 22px;
+}
+
+.section-heading h2 {
+    font-size: 19px;
+}
+
+.section-heading input {
+    width: min(250px, 100%);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: white;
+    border-radius: 10px;
+    padding: 12px;
+    outline: none;
+}
+
+.section-heading input:focus,
+textarea:focus {
+    border-color: var(--cyan);
+}
+
+/* <!------- Stage 6: Filters -------> */
+
+.filters {
+    display: flex;
+    gap: 9px;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
+}
+
+.filter {
+    padding: 9px 14px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.filter.active {
+    color: var(--cyan);
+    background: rgba(54,216,232,.10);
+    border-color: rgba(54,216,232,.3);
+}
+
+/* <!------- Stage 7: Booking Cards -------> */
+
+.booking-list {
+    display: grid;
+    gap: 13px;
+}
+
+.booking-card {
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,.025);
+    border-radius: 14px;
+    padding: 18px;
+}
+
+.booking-top,
+.booking-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.booking-top h3 {
+    font-size: 16px;
+}
+
+.booking-id {
+    color: var(--muted);
+    font-size: 11px;
+    margin-top: 6px;
+    overflow-wrap: anywhere;
+}
+
+.booking-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 17px;
+    color: var(--muted);
+    font-size: 12px;
+    margin: 17px 0;
+}
+
+.status {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    text-transform: capitalize;
+}
+
+.status.pending {
+    color: var(--yellow);
+    background: rgba(255,199,106,.10);
+}
+
+.status.accepted {
+    color: var(--cyan);
+    background: rgba(54,216,232,.10);
+}
+
+.status.rejected {
+    color: var(--red);
+    background: rgba(255,101,123,.10);
+}
+
+.status.completed {
+    color: var(--green);
+    background: rgba(54,214,154,.10);
+}
+
+.status.cancelled {
+    color: #b5a6ce;
+    background: rgba(181,166,206,.10);
+}
+
+.booking-actions {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.action-btn,
+.primary-btn,
+.secondary-btn,
+.danger-btn {
+    padding: 10px 14px;
+    border-radius: 9px;
+    border: 1px solid var(--border);
+    font-size: 12px;
+}
+
+.action-btn {
+    background: var(--card-light);
+    color: var(--text);
+}
+
+.accept-btn,
+.primary-btn {
+    background: var(--cyan);
+    color: #07101e;
+    border-color: transparent;
+    font-weight: 700;
+}
+
+.reject-btn,
+.danger-btn {
+    background: rgba(255,101,123,.12);
+    color: var(--red);
+    border-color: rgba(255,101,123,.2);
+}
+
+.secondary-btn {
+    background: var(--card-light);
+    color: var(--text);
+}
+
+/* <!------- Stage 8: Empty and Loading States -------> */
+
+.loading,
+.empty-state {
+    text-align: center;
+    color: var(--muted);
+    padding: 45px 15px;
+    font-size: 13px;
+}
+
+.message {
+    margin-top: 15px;
+    font-size: 13px;
+    color: var(--cyan);
+}
+
+.message.error {
+    color: var(--red);
+}
+
+/* <!------- Stage 9: Modals -------> */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.75);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    z-index: 50;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    width: min(480px, 100%);
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    background: #111c32;
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    padding: 25px;
+}
+
+.modal-content h2 {
+    margin-bottom: 17px;
+    font-size: 20px;
+}
+
+.modal-content p {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.modal-close {
+    position: absolute;
+    right: 17px;
+    top: 12px;
+    background: transparent;
+    border: 0;
+    color: white;
+    font-size: 25px;
+}
+
+.modal-content label {
+    display: block;
+    margin: 16px 0 8px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.modal-content textarea {
+    width: 100%;
+    resize: vertical;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: white;
+    padding: 12px;
+    outline: none;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 17px;
+}
+
+.detail-row {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.detail-row span {
+    display: block;
+    color: var(--muted);
+    font-size: 11px;
+    margin-bottom: 6px;
+}
+
+.detail-row strong {
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+/* <!------- Stage 10: Responsive Layout -------> */
+
+@media (max-width: 900px) {
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 650px) {
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform .25s ease;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .main {
+        width: 100%;
+        margin-left: 0;
+        padding: 20px 14px;
+    }
+
+    .menu-btn {
+        display: inline-block;
+        margin-bottom: 12px;
+    }
+
+    .topbar {
+        align-items: flex-start;
+    }
+
+    .stats {
+        gap: 10px;
+    }
+
+    .stat-card {
+        padding: 15px;
+    }
+
+    .stat-card strong {
+        font-size: 24px;
+    }
+
+    .booking-section {
+        padding: 15px;
+    }
+
+    .section-heading {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .section-heading input {
+        width: 100%;
+    }
+
+    .booking-top {
+        align-items: flex-start;
+    }
+}

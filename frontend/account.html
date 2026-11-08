@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#09111f">
+    <meta name="description" content="Manage your CF Chefs account">
+    <title>Account Center | CF Chefs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="./account.css">
+    <link rel="stylesheet" href="./tab.css">
+</head>
+
+<body>
+    <div class="ambient ambient-cyan"></div>
+    <div class="ambient ambient-violet"></div>
+    <main class="account-shell">
+        <!-- <!------- Stage 1: Account Header -------> -->
+        <header class="account-topbar">
+            <a class="brand" href="./dashboard.html"><span class="brand-mark"><i class="fa-solid fa-utensils"></i></span><span><strong>CF <em>Chefs</em></strong><small>ACCOUNT CENTER</small></span></a>
+            <a class="back-link" href="./profile.html"><i class="fa-solid fa-arrow-left"></i><span>Back to profile</span></a>
+        </header>
+
+        <!-- <!------- Stage 2: Account Overview -------> -->
+        <section class="account-intro glass-card">
+            <div class="intro-icon"><i class="fa-solid fa-user-shield"></i></div>
+            <div><p class="eyebrow">ACCOUNT CONTROL</p><h1>Your account center</h1><p>Manage your session, request a copy of your information, or ask our team to close your account.</p></div>
+            <span class="secure-badge"><i class="fa-solid fa-lock"></i> Private & secure</span>
+        </section>
+
+        <div class="account-grid">
+            <!-- <!------- Stage 3: Session Card -------> -->
+            <section class="account-card glass-card">
+                <div class="card-icon cyan"><i class="fa-solid fa-right-from-bracket"></i></div>
+                <div class="card-copy"><p class="card-kicker">SESSION</p><h2>Sign out</h2><p>Sign out of CF Chefs on this device. You can sign in again whenever you are ready.</p></div>
+                <button class="action-button outline-cyan" id="signOutButton" type="button"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sign Out</button>
+            </section>
+
+            <!-- <!------- Stage 4: Data Export Card -------> -->
+            <section class="account-card glass-card">
+                <div class="card-icon violet"><i class="fa-solid fa-file-export"></i></div>
+                <div class="card-copy"><p class="card-kicker">YOUR DATA</p><h2>Export your data</h2><p>Download a private JSON copy of the account and chef profile information currently available to you.</p></div>
+                <button class="action-button outline-violet" id="exportButton" type="button"><i class="fa-solid fa-download"></i> Download Data</button>
+            </section>
+
+            <!-- <!------- Stage 5: Deletion Request Card -------> -->
+            <section class="account-card danger-card glass-card">
+                <div class="card-icon danger"><i class="fa-solid fa-user-xmark"></i></div>
+                <div class="card-copy"><p class="card-kicker">IRREVERSIBLE REQUEST</p><h2>Request account deletion</h2><p>Our team will review your request before any permanent action is taken. Your account stays available until then.</p></div>
+                <button class="action-button outline-danger" id="deleteButton" type="button"><i class="fa-solid fa-triangle-exclamation"></i> Request Deletion</button>
+            </section>
+        </div>
+
+        <!-- <!------- Stage 6: Status and Footer -------> -->
+        <div class="account-status" id="accountStatus" role="status" aria-live="polite"><i class="fa-solid fa-circle-info"></i><span>Loading your account securely...</span></div>
+        <footer class="account-footer"><span>© <span id="currentYear"></span> CF Chefs</span><span>Your data belongs to you.</span></footer>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+    <script src="./supabase-config.js" defer></script>
+    <script src="./account.js" defer></script>
+    <script src="./tab.js" defer></script>
+</body>
+</html>

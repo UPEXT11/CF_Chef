@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#08111f">
+    <meta name="description" content="CF Chefs professional dashboard">
+    <title>Dashboard | CF Chefs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="./dashboard.css">
+    <link rel="stylesheet" href="./tab.css">
+</head>
+
+<body>
+    <div class="orb orb-cyan"></div>
+    <div class="orb orb-violet"></div>
+    <div class="app-shell">
+        <!-- <!------- Stage 1: Main Header -------> -->
+        <main class="main-content" id="overview">
+            <header class="topbar">
+                <div><p class="overline">CHEF WORKSPACE</p><h1>Overview</h1></div>
+                <div class="topbar-actions"><span class="connection"><i class="live-dot"></i><span id="connectionText">Connecting</span></span><a class="icon-action" href="./profile.html" aria-label="View profile"><i class="fa-regular fa-bell"></i></a><span class="top-avatar" id="topAvatar">C</span></div>
+            </header>
+
+            <div class="dashboard-content">
+                <!-- <!------- Stage 3: Welcome Banner -------> -->
+                <section class="welcome-card">
+                    <div class="welcome-copy">
+                        <span class="eyebrow"><i class="fa-solid fa-sparkles"></i> YOUR CHEF SPACE</span>
+                        <h2>Good to see you, <span id="welcomeName">Chef</span>.</h2>
+                        <p>Your kitchen is ready. Keep your profile fresh and turn your next opportunity into a memorable experience.</p>
+                        <div class="welcome-actions"><a class="button button-light" href="./profile.html">View profile <i class="fa-solid fa-arrow-up-right-from-square"></i></a><a class="text-link" href="./bookings.html">See bookings <i class="fa-solid fa-arrow-right"></i></a></div>
+                    </div>
+                    <div class="welcome-art" aria-hidden="true"><span class="art-ring ring-one"></span><span class="art-ring ring-two"></span><i class="fa-solid fa-kitchen-set"></i></div>
+                </section>
+
+                <!-- <!------- Stage 4: Key Metrics -------> -->
+                <section class="metrics-grid" aria-label="Dashboard metrics">
+                    <article class="metric-card"><div class="metric-top"><span class="metric-icon cyan"><i class="fa-solid fa-calendar-check"></i></span><span class="metric-trend neutral"><i class="fa-solid fa-minus"></i> Live</span></div><p>Total bookings</p><strong id="totalBookings">—</strong><small>All-time requests</small></article>
+                    <article class="metric-card"><div class="metric-top"><span class="metric-icon violet"><i class="fa-solid fa-hourglass-half"></i></span><span class="metric-trend orange"><i class="fa-solid fa-circle"></i> Review</span></div><p>Pending requests</p><strong id="pendingBookings">—</strong><small>Awaiting your response</small></article>
+                    <article class="metric-card"><div class="metric-top"><span class="metric-icon green"><i class="fa-solid fa-star"></i></span><span class="metric-trend green">Profile</span></div><p>Profile strength</p><strong id="profileStrength">—</strong><small id="profileStrengthText">Complete your chef story</small></article>
+                    <article class="metric-card"><div class="metric-top"><span class="metric-icon orange"><i class="fa-solid fa-indian-rupee-sign"></i></span><span class="metric-trend neutral">Soon</span></div><p>Estimated earnings</p><strong>₹—</strong><small>Earnings tracking is next</small></article>
+                </section>
+
+                <!-- <!------- Stage 5: Operations -------> -->
+                <div class="content-grid">
+                    <section class="panel activity-panel">
+                        <div class="panel-heading"><div><p class="overline">YOUR MOMENTUM</p><h2>Booking activity</h2></div><a class="panel-link" href="./bookings.html">View all <i class="fa-solid fa-arrow-right"></i></a></div>
+                        <div class="chart-area" aria-label="Booking activity overview">
+                            <div class="chart-y"><span>12</span><span>8</span><span>4</span><span>0</span></div>
+                            <div class="chart"><div class="grid-line"></div><div class="grid-line"></div><div class="grid-line"></div><div class="grid-line"></div><div class="bars"><span style="--height:18%"><i>Jan</i></span><span style="--height:30%"><i>Feb</i></span><span style="--height:24%"><i>Mar</i></span><span style="--height:44%"><i>Apr</i></span><span style="--height:38%"><i>May</i></span><span class="current" style="--height:63%"><i>Jun</i></span></div></div>
+                        </div>
+                        <div class="chart-footer"><span><i class="legend-dot"></i> Booking requests</span><strong id="activitySummary">Your activity will appear here</strong></div>
+                    </section>
+                    <section class="panel profile-health" id="profile">
+                        <div class="panel-heading"><div><p class="overline">PROFILE HEALTH</p><h2>Ready to be discovered?</h2></div><i class="fa-solid fa-arrow-up-right-dots panel-heading-icon"></i></div>
+                        <div class="completion"><div class="completion-circle"><strong id="completionValue">—</strong><span>complete</span></div><div><h3 id="completionTitle">Building your profile</h3><p id="completionDescription">Add the details that make your service stand out.</p></div></div>
+                        <div class="progress-track"><span id="completionBar"></span></div>
+                        <div class="health-list"><div><i class="fa-solid fa-check"></i><span>Basic identity</span><b>Ready</b></div><div id="healthStory"><i class="fa-solid fa-circle"></i><span>Chef story and speciality</span><b>To do</b></div><div id="healthServices"><i class="fa-solid fa-circle"></i><span>Services and availability</span><b>To do</b></div></div>
+                        <a class="button button-outline" href="./edit.html">Improve profile <i class="fa-solid fa-arrow-right"></i></a>
+                    </section>
+                </div>
+
+                <!-- <!------- Stage 6: Chef Snapshot -------> -->
+                <section class="panel snapshot-panel">
+                    <div class="panel-heading"><div><p class="overline">PERSONAL INFORMATION</p><h2>Your chef snapshot</h2></div><a class="panel-link" href="./profile.html">View profile <i class="fa-solid fa-arrow-right"></i></a></div>
+                    <div class="snapshot-main"><div class="snapshot-avatar" id="profileAvatar">C</div><div><h3 id="profileName">Loading profile...</h3><p id="profileUsername">@username <span class="verified"><i class="fa-solid fa-check"></i> Chef account</span></p></div><a class="edit-link" href="./edit.html"><i class="fa-solid fa-pencil"></i> Edit</a></div>
+                    <div class="snapshot-details"><div><span>Email address</span><strong id="profileEmail">Loading...</strong></div><div><span>Phone number</span><strong id="profilePhone">Not provided</strong></div><div><span>Chef ID</span><strong id="profileId">Loading...</strong></div><div><span>Member since</span><strong id="profileJoined">Loading...</strong></div></div>
+                </section>
+
+                <!-- <!------- Stage 7: Next Actions -------> -->
+                <section class="next-section">
+                    <div class="section-heading"><div><p class="overline">KEEP MOVING</p><h2>Make your next move</h2></div></div>
+                    <div class="next-grid"><a class="next-card" href="./bookings.html"><span class="next-icon cyan"><i class="fa-solid fa-calendar-plus"></i></span><div><span class="card-kicker">WORKSPACE</span><h3>Manage bookings</h3><p>Review and respond to customer requests.</p></div><i class="fa-solid fa-arrow-up-right-from-square next-arrow"></i></a><a class="next-card" href="./edit.html"><span class="next-icon violet"><i class="fa-solid fa-wand-magic-sparkles"></i></span><div><span class="card-kicker">GROW YOUR PRESENCE</span><h3>Complete your profile</h3><p>Show guests the chef behind the craft.</p></div><i class="fa-solid fa-arrow-up-right-from-square next-arrow"></i></a><a class="next-card disabled-card" href="#earnings"><span class="next-icon orange"><i class="fa-solid fa-chart-line"></i></span><div><span class="card-kicker">COMING SOON</span><h3>Earnings insights</h3><p>Track your growth and payouts in one place.</p></div><i class="fa-solid fa-lock next-arrow"></i></a></div>
+                </section>
+                <footer class="footer"><span>© <span id="currentYear"></span> CF Chefs</span><span>Built for culinary professionals <i class="fa-solid fa-heart"></i></span></footer>
+            </div>
+        </main>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="./supabase-config.js"></script>
+    <script src="./dashboard.js"></script>
+    <script src="./tab.js"></script>
+</body>
+</html>
