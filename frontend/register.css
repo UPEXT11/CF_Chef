@@ -220,7 +220,7 @@ body {
 .cuisine-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 7px;
+    gap: 10px;
 }
 
 .cuisine-option {
@@ -235,7 +235,8 @@ body {
 
 .cuisine-option span {
     display: block;
-    padding: 10px 8px;
+    min-height: 42px;
+    padding: 11px 8px;
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 9px;
     background: rgba(255,255,255,0.035);
@@ -243,6 +244,19 @@ body {
     font-size: 10px;
     text-align: center;
     transition: .2s ease;
+}
+
+.cuisine-option-other {
+    grid-column: 1 / -1;
+}
+
+.cuisine-option-other span {
+    padding: 14px 8px;
+    background: linear-gradient(110deg, rgba(115,232,255,0.07), rgba(181,138,255,0.08));
+    color: #d3ddf0;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .2px;
 }
 
 .cuisine-option input:checked + span {
@@ -824,6 +838,24 @@ body {
 
     .form-group {
         margin-bottom: 14px;
+    }
+
+    .chef-details {
+        padding: 18px 13px 15px;
+    }
+
+    .cuisine-grid {
+        grid-template-columns: 1fr;
+        gap: 9px;
+    }
+
+    .cuisine-option-other {
+        grid-column: auto;
+    }
+
+    .price-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
     }
 
 }
