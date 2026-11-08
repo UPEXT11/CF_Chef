@@ -232,6 +232,58 @@
                 </div>
 
 
+                <section class="chef-details" aria-labelledby="chefDetailsTitle">
+
+                    <div class="section-heading">
+                        <span class="section-kicker">CHEF PROFILE</span>
+                        <h2 id="chefDetailsTitle">Tell us about your kitchen</h2>
+                        <p>These details help customers find the right chef for their occasion.</p>
+                    </div>
+
+                    <fieldset class="cuisine-fieldset">
+                        <legend>Cuisines you can make <span>Select all that apply</span></legend>
+
+                        <div class="cuisine-grid">
+                            <label class="cuisine-option"><input type="checkbox" name="cuisine" value="Indian"><span>Indian</span></label>
+                            <label class="cuisine-option"><input type="checkbox" name="cuisine" value="North Indian"><span>North Indian</span></label>
+                            <label class="cuisine-option"><input type="checkbox" name="cuisine" value="South Indian"><span>South Indian</span></label>
+                            <label class="cuisine-option"><input type="checkbox" name="cuisine" value="Chinese"><span>Chinese</span></label>
+                            <label class="cuisine-option"><input type="checkbox" name="cuisine" value="Italian"><span>Italian</span></label>
+                            <label class="cuisine-option"><input type="checkbox" name="cuisine" value="Mexican"><span>Mexican</span></label>
+                            <label class="cuisine-option"><input type="checkbox" name="cuisine" value="Continental"><span>Continental</span></label>
+                            <label class="cuisine-option"><input type="checkbox" name="cuisine" value="Thai"><span>Thai</span></label>
+                            <label class="cuisine-option"><input type="checkbox" name="cuisine" value="Mughlai"><span>Mughlai</span></label>
+                            <label class="cuisine-option"><input type="checkbox" name="cuisine" value="Other"><span>Other</span></label>
+                        </div>
+                    </fieldset>
+
+                    <div class="form-group compact-group">
+                        <label for="otherCuisines">Other cuisines <span>Optional</span></label>
+                        <input type="text" id="otherCuisines" name="otherCuisines" maxlength="160" placeholder="e.g. Korean, Mediterranean">
+                    </div>
+
+                    <div class="form-group compact-group">
+                        <label for="signatureDish">Your special dish</label>
+                        <input type="text" id="signatureDish" name="signatureDish" maxlength="160" placeholder="e.g. Butter chicken with garlic naan" required>
+                    </div>
+
+                    <div class="price-grid">
+                        <div class="form-group compact-group">
+                            <label for="minimumPrice">Minimum charge <span>₹</span></label>
+                            <input type="number" id="minimumPrice" name="minimumPrice" min="0" max="10000000" step="1" placeholder="2,000" required>
+                        </div>
+
+                        <div class="form-group compact-group">
+                            <label for="maximumPrice">Maximum charge <span>₹</span></label>
+                            <input type="number" id="maximumPrice" name="maximumPrice" min="0" max="10000000" step="1" placeholder="25,000" required>
+                        </div>
+                    </div>
+
+                    <small class="section-note">Share your usual price range in Indian rupees. You can update these details later from Edit Profile.</small>
+
+                </section>
+
+
                 <label class="terms-row">
 
                     <input

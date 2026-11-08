@@ -15,6 +15,11 @@ const phoneInput = document.getElementById("phone");
 const passwordInput = document.getElementById("password");
 const confirmPasswordInput = document.getElementById("confirmPassword");
 const atcInput = document.getElementById("atc");
+const cuisineInputs = [...document.querySelectorAll('input[name="cuisine"]')];
+const otherCuisinesInput = document.getElementById("otherCuisines");
+const signatureDishInput = document.getElementById("signatureDish");
+const minimumPriceInput = document.getElementById("minimumPrice");
+const maximumPriceInput = document.getElementById("maximumPrice");
 
 const termsInput = document.getElementById("terms");
 
@@ -195,17 +200,26 @@ function validateRegistration() {
     const confirmPassword = confirmPasswordInput.value;
 
     const atc = atcInput.value.trim();
+    const cuisines = cuisineInputs.filter((input) => input.checked).map((input) => input.value);
+    const otherCuisines = otherCuisinesInput.value.trim();
+    const signatureDish = signatureDishInput.value.trim();
+    const minimumPrice = Number(minimumPriceInput.value);
+    const maximumPrice = Number(maximumPriceInput.value);
 
-    if (
-        !fullName ||
-        !username ||
-        !email ||
-        !phone ||
-        !password ||
-        !confirmPassword ||
-        !atc
-    ) {
+    if (!fullName || !username || !email || !phone || !password || !confirmPassword || !atc || !signatureDish || !minimumPriceInput.value || !maximumPriceInput.value) {
         return "Please complete all fields.";
+    }
+
+    if (!cuisines.length && !otherCuisines) {
+        return "Select at least one cuisine you can make.";
+    }
+
+    if (!Number.isFinite(minimumPrice) || minimumPrice < 0 || !Number.isFinite(maximumPrice) || maximumPrice < 0) {
+        return "Enter valid minimum and maximum charges.";
+    }
+
+    if (minimumPrice > maximumPrice) {
+        return "Maximum charge must be greater than or equal to minimum charge.";
     }
 
     if (fullName.length < 2 || fullName.length > 80) {
@@ -334,8 +348,12 @@ async function createChefAccount(details) {
                 username: details.username,
 
                 phone: details.phone,
-
-                atc: details.atc
+                atc: details.atc,
+                cuisines: details.cuisines,
+                other_cuisines: details.otherCuisines || null,
+                signature_dishes: details.signatureDish,
+                min_price: details.minimumPrice,
+                max_price: details.maximumPrice
 
             }
 
@@ -352,7 +370,33 @@ async function createChefAccount(details) {
 }
 
 
-/* <!------- Stage 14: Registration Submission -------> */
+/* <!------- Stage 14: Chef Profile Persistence -------> */
+
+async function saveChefProfile(userId, details) {
+
+    const { error } = await supabaseClient
+        .from("chef_profiles")
+        .upsert({
+            id: userId,
+            full_name: details.fullName,
+            username: details.username,
+            phone: details.phone,
+            cuisines: details.cuisines,
+            other_cuisines: details.otherCuisines || null,
+            signature_dishes: details.signatureDish,
+            min_price: details.minimumPrice,
+            max_price: details.maximumPrice
+        }, { onConflict: "id" });
+
+    if (error) {
+        console.error("Chef profile save error:", error);
+        throw new Error("Your account was created, but chef details could not be saved. Please contact support.");
+    }
+
+}
+
+
+/* <!------- Stage 15: Registration Submission -------> */
 
 registerForm.addEventListener("submit", async event => {
 
@@ -382,7 +426,17 @@ registerForm.addEventListener("submit", async event => {
 
         password: passwordInput.value,
 
-        atc: atcInput.value.trim()
+        atc: atcInput.value.trim(),
+
+        cuisines: cuisineInputs.filter((input) => input.checked).map((input) => input.value),
+
+        otherCuisines: otherCuisinesInput.value.trim(),
+
+        signatureDish: signatureDishInput.value.trim(),
+
+        minimumPrice: Number(minimumPriceInput.value),
+
+        maximumPrice: Number(maximumPriceInput.value)
 
     };
 
@@ -395,7 +449,7 @@ registerForm.addEventListener("submit", async event => {
         }
 
 
-        /* <!------- Stage 15: Check ATC -------> */
+        /* <!------- Stage 16: Check ATC -------> */
 
         showMessage(
             "Verifying your authorization code...",
@@ -411,7 +465,7 @@ registerForm.addEventListener("submit", async event => {
         }
 
 
-        /* <!------- Stage 16: Create Account -------> */
+        /* <!------- Stage 17: Create Account -------> */
 
         showMessage(
             "ATC verified. Creating your chef account...",
@@ -421,9 +475,11 @@ registerForm.addEventListener("submit", async event => {
         const result = await createChefAccount(details);
 
 
-        /* <!------- Stage 17: Handle Signup Result -------> */
+        /* <!------- Stage 18: Handle Signup Result -------> */
 
         if (result.session) {
+
+            await saveChefProfile(result.user.id, details);
 
             showMessage(
                 "Welcome to CF Chef! Opening your dashboard...",
@@ -466,6 +522,6 @@ registerForm.addEventListener("submit", async event => {
 });
 
 
-/* <!------- Stage 18: Initial Setup -------> */
+/* <!------- Stage 19: Initial Setup -------> */
 
 checkExistingSession();
