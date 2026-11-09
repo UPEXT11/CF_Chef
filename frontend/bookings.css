@@ -724,6 +724,16 @@ textarea:focus {
         border-radius: 18px 18px 12px 12px;
     }
 
+    #responseModal {
+        align-items: center;
+    }
+
+    #responseModal .modal-content {
+        width: min(440px, 100%);
+        max-height: 82vh;
+        border-radius: 18px;
+    }
+
     .modal-actions {
         display: grid;
         grid-template-columns: 1fr 1fr;

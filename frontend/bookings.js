@@ -407,7 +407,12 @@ function prepareAction(action, id) {
     document.getElementById("responseDescription").textContent =
         selected.description;
 
-    document.getElementById("responseNote").value = "";
+    const responseNote = document.getElementById("responseNote");
+    responseNote.value = "";
+    responseNote.required = action === "reject";
+    responseNote.setCustomValidity("");
+    document.querySelector('label[for="responseNote"]').textContent =
+        action === "reject" ? "Note (required to reject)" : "Note (optional)";
 
     openModal("responseModal");
 }
@@ -582,12 +587,23 @@ document.getElementById("responseCancel").addEventListener(
     () => closeModal("responseModal")
 );
 
+document.getElementById("responseNote").addEventListener("input", (event) => {
+    event.currentTarget.setCustomValidity("");
+});
+
 document.getElementById("responseConfirm").addEventListener(
     "click",
     async () => {
         if (!pendingAction) return;
 
-        const note = document.getElementById("responseNote").value;
+        const responseNote = document.getElementById("responseNote");
+        const note = responseNote.value.trim();
+
+        if (pendingAction.action === "reject" && !note) {
+            responseNote.setCustomValidity("Please enter a note before rejecting this booking.");
+            responseNote.reportValidity();
+            return;
+        }
 
         await updateBooking(
             pendingAction.id,
